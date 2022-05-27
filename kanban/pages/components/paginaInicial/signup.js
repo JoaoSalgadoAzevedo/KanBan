@@ -1,10 +1,10 @@
-// import { Form } from 'formik'
 import Head from 'next/head'
-import { useFormik } from 'formik';
+// import {Formik, Form} from 'formik'
+// import {TextField} from './TextField'
+
+export default function Registo() {
 
 
-
-export default function Login() {
   return (
     <>
 
@@ -20,14 +20,21 @@ export default function Login() {
         <aside>
 
           <h1>LOGOTIPO</h1>
-          <p>Welcome to your new Job!</p>
+          <p>Regista-te</p>
           {/* <img>VAI TER AQUI UMA IMAGEM</img> */}
 
         </aside>
 
+
         <form onSubmit={(e) => { e.preventDefault() }}>
 
+          <label>Nome</label>
+          <input type="text" autoComplete="off"></input><br />
+          <label>Apelido</label>
+          <input type="text" autoComplete="off"></input><br />
 
+          <label>Contacto Móvel</label>
+          <input type="tel"></input><br />
 
           <label>Email</label>
           <input type="email" name="description" placeholder="Email" autoComplete="off" /><br />
@@ -35,13 +42,18 @@ export default function Login() {
           <label>Password</label>
           <input type="password" name="description" placeholder="Inserir Password" autoComplete="off" /><br />
 
+          <label>Confirmar Password</label>
+          <input type="password" name="description" placeholder=""></input><br />
 
-
-
+          <label>Aceitar Termos e Condições</label>
+          <input type="checkbox" name=""></input><br />
 
           <input type="submit" value="Registar"></input>
 
+
+
         </form>
+
 
 
         <footer>copyright</footer>

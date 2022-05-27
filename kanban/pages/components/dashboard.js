@@ -9,7 +9,7 @@ import Coluna5 from './colunas/coluna5'
 export default  function Dashboard() {
 
   return (
-    <div>
+    <>
 
     <Head>
     <title>OPPLOG</title>
@@ -31,7 +31,7 @@ export default  function Dashboard() {
 
     </body>
 
-    </div>
+    </>
     
 
   )
