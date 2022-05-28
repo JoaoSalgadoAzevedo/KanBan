@@ -1,9 +1,17 @@
 import Head from 'next/head'
+import { useState } from "react"
+import { validateEmail } from './functions_auth'
 // import {Formik, Form} from 'formik'
 // import {TextField} from './TextField'
+import { testEmail } from '../../../services/auth'
 
-export default function Registo() {
-
+export default function Signup() {
+  const [signupData, setSignupData] = useState({
+    Name: 'name',
+    Phone_Number: 'tel',
+    Email_Address: 'email',
+    Password: 'password',
+  })
 
   return (
     <>
@@ -26,7 +34,9 @@ export default function Registo() {
         </aside>
 
 
-        <form onSubmit={(e) => { e.preventDefault() }}>
+        <form onSubmit={(e) => {
+          e.preventDefault()
+        }}>
 
           <label>Nome</label>
           <input type="text" autoComplete="off"></input><br />
@@ -37,7 +47,8 @@ export default function Registo() {
           <input type="tel"></input><br />
 
           <label>Email</label>
-          <input type="email" name="description" placeholder="Email" autoComplete="off" /><br />
+          <input type="email" name="description" onChange={(e) => setSignupData({ ...signupData, Email_Address: e.target.value })} placeholder="Email" autoComplete="off" />
+          <p>{!validateEmail(signupData.Email_Address) && "Please insert a valid email address."}</p>
 
           <label>Password</label>
           <input type="password" name="description" placeholder="Inserir Password" autoComplete="off" /><br />

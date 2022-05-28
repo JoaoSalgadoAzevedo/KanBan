@@ -1,36 +1,45 @@
-// const { findUserByEmail } = require("./mongo")
+// // import { findUserByEmail } from ("../data/db")
 
-// const testEmail = async (email) => {
-//     // vazio ou não definido
-//     //      Por favor introduza o seu endereço de email.
-//     // validateEmail
-//     //      Por favor introduza um endereço de email válido.
-//     // se já existe uma conta com o mesmo email
-//     //      O endereço introduzido já está registado.
+// // // export default function Authentications(email, password, passwordConfirmation, terms) {
+// // //     testEmail(email);
+// // //     testPassword(password);
+// // //     testPasswordConfirmation(password, passwordConfirmation);
+// // //     testTerms(terms);
+// // //  //quando chamares esta funcao tens que fazer string do JSON
 
-//     const validations = [
-//         {
-//             validation: (email) => email && String(email).length > 0,
-//             message: "Por favor introduza o seu endereço de email."
-//         },
-//         {
-//             validation: (email) => validateEmail(email),
-//             message: "Por favor introduza um endereço de email válido."
-//         },
-//         {
-//             validation: async (email) => !await findUserByEmail(email),
-//             message: "O endereço introduzido já está registado."
-//         }
-//     ]
+// // // }
 
-//     for (const validation of validations) {
-//         if (!await validation.validation(email)) {
-//             return {
-//                 email: validation.message
-//             }
-//         }
-//     }
-// }
+// // const testEmail = async (email) => {
+// //     // vazio ou não definido
+// //     //      Por favor introduza o seu endereço de email.
+// //     // validateEmail
+// //     //      Por favor introduza um endereço de email válido.
+// //     // se já existe uma conta com o mesmo email
+// //     //      O endereço introduzido já está registado.
+
+// //     const validations = [
+// //         {
+// //             validation: (email) => email && String(email).length > 0,
+// //             message: "Por favor introduza o seu endereço de email."
+// //         },
+// //         {
+// //             validation: (email) => validateEmail(email),
+// //             message: "Por favor introduza um endereço de email válido."
+// //         },
+// //         {
+// //             validation: async (email) => !await findUserByEmail(email),
+// //             message: "O endereço introduzido já está registado."
+// //         }
+// //     ]
+
+// //     for (const validation of validations) {
+// //         if (!await validation.validation(email)) {
+// //             return {
+// //                 email: validation.message
+// //             }
+// //         }
+// //     }
+// // }
 // const testPassword = (password) => {
 //     // vazio ou não definido
 //     //      Por favor introduza a sua password.
@@ -97,8 +106,8 @@
 //         .reduce((score, t) => t ? score + 1 : score, 0)
 // }
 
-// module.exports = {
-//     testEmail,
-//     testPassword,
-//     testPasswordConfirmation,
-//     testTerms}
+// // module.exports = {
+// //     testEmail,
+// //     testPassword,
+// //     testPasswordConfirmation,
+// //     testTerms}
