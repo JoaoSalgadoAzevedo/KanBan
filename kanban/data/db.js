@@ -1,54 +1,42 @@
-import { MongoClient } from "mongodb";
-const MONGO_URL = process.env.MONGO_URL
-    ?? "mongodb://localhost:27017"
-
+import { MongoClient } from "mongodb" 
+const URL = process.env.MONGO_URL ?? "mongodb://localhost:27017"
+const DB_NAME = "db_opplog"
+const COLLECTION_USERS = "db_users"
+const COLLECTION_CARDS = "db_cards"
 
 let client;
-export async function connectToMongo() {
+
+export  async function connectToMongo() {
     try {
-        if (!client) {
-            client = await MongoClient.connect(MONGO_URL)
-        }
+        if (!client) { client = await MongoClient.connect(URL)}
+        console.log(client)
         return client
-    } catch (err) {
-        console.log(err)
+    } catch (errors) {
+        console.log(errors)
     }
 }
 
-export async function getMongoCollection(collectionName) {
+export  async function getMongoCollection(dbName, collectionName) {
     const client = await connectToMongo()
-    return await client.db("DB_OPPLOG").collection(collectionName)
+    return  await client.db(dbName).collection(collectionName)
 }
 
 
+//sign in/up
+export  async function findUserByEmail(email) {
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_USERS)
+    return await collection.findOne({ EmailAddress: email })
+    
+}
 
+//sign up
+export  async function createUser(data) {
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_USERS)
+    return await collection.insertOne({...data})
+}
 
-async function findUserByEmail(email) {
-    const collection = await getMongoCollection("USERS_DB")
-    return await collection.findOne({ email: email })
-    // return await collection.find({email: email}).toArray()[0]
-}
-async function findUserById(id) {
-    const collection = await getMongoCollection("USERS_DB")
-    return await collection.findOne({ _id: ObjectId(id) })
-    // return await collection.find({email: email}).toArray()[0]
-}
-async function findSessionById(id) {
-    const collection = await getMongoCollection("USERS_DB")
-    return await collection.findOne({ _id: ObjectId(id) })
-    // return await collection.find({email: email}).toArray()[0]
-}
-async function createUser(data) {
-    const collection = await getMongoCollection("USERS_DB")
-    return await collection.insertOne({...data, points:0})
-}
-async function createSession(data) {
-    const collection = await getMongoCollection("USERS_DB")
+// sign in
+export  async function createSession(data) {
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
     return await collection.insertOne(data)
 }
-
-
-//NOS VAMOS TER 1 DB C/ 2 COLECTIONS
-// DB_OPPLOG
-// colecoes === COL_USER
-// === COL_CARDS

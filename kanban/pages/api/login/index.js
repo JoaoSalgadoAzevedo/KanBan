@@ -1,6 +1,9 @@
+import { confirmPassEmail, goToPlatform } from "../../../services/login"
+
 export default async function (req, res) {
-    if(req.method === "POST") {
-        const {email, password} = req.body
-        return login(email, password);
+    if (req.method === "POST") {
+        console.log(req.body)
+        return await confirmPassEmail(req.body.EmailAddress, req.body.Password, res )
     }
 }
+   
