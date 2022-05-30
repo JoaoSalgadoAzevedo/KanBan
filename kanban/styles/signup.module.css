@@ -43,13 +43,16 @@
   .containerE1 {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-around;
+    /* align-items: center; */
     position: relative;
     height: 85%;
     width: 85%;
     background: #FBFFFF;
     border-radius: 93px;
+    /* font-size: large; */
+    
+    
   }
 
 
@@ -58,8 +61,9 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items:flex-start;
-    position:inherit;
+    position:relative;
     height: 70vh;
+    margin-top: 70px;
     background-color: #FBFFFF;
   
   }
@@ -68,6 +72,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+    /* margin-right: 0; */
+    padding-right: 0px;
 
   }
   
@@ -75,6 +82,8 @@
     display: flex;
     flex-direction: column;
     align-items:flex-start;
+    border-radius: 12px;
+    border-color: #00B2CA;
   }
 
   .logo{
@@ -93,3 +102,5 @@
     bottom: 21px;
     
   }
+
+ 

@@ -59,7 +59,8 @@ export default function Signup() {
             }>
  <span>SIGN UP</span>
           <label> First Name
-            <input className={styles.input}
+            <input 
+            className={styles.input}
               type="text"
               onChange={(e) => setSignupData({ ...signupData, FirstName: e.target.value })}
               autoComplete="off"></input>
@@ -112,8 +113,8 @@ export default function Signup() {
           </button>
            
         </form>
-        <button onClick={() => router.push('/')}>Go back</button>
-        <footer className={styles.footer}>copyright</footer>
+        
+        <footer className={styles.footer}><button onClick={() => router.push('/')}>Go back</button> copyright</footer>
       </main>
     </div>
   )
