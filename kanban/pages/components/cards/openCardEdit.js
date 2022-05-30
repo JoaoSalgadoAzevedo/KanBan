@@ -105,38 +105,49 @@ export default function OpenCardEdit() {
               <br /><label>Salary Range Between</label>
               <input type="number"
                 onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
-                name="salary" min="200" max="5000" value="800" />
+                name="salary" min="200" max="5000"  step="25" />
               <label>-</label>
               <input type="number"
                 onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
-                name="salary" min="200" max="5000" value="800" /><br />
+                name="salary" min="200" max="5000" step="25" />
+                <select>
+                  
+                  <option>Euro   €</option>
+                  <option>Dolar    $</option>
+                  <option>Cenas ai</option>
+
+                  </select><br />
 
 
 
 
-              <h5>Regime:</h5>
-              <label>Presencial
-                <input type="radio" id="Presencial"
-                  onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+              <label>Regime:</label>
+              <select>
+
+
+              <option>Presencial
+                {/* <input type="radio" id="Presencial"
+                  //onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
                   name="regime" value="presencial"
-                  checked ></input>
-              </label><br />
+                  checked ></input> */}
+              </option>
 
 
-              <label >Remote
-                <input type="radio" id="remote"
-                  onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+              <option >Remote
+                {/* <input type="radio" id="remote"
+                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
                   name="regime" value="remote"
-                ></input>
-              </label><br />
+                ></input> */}
+              </option>
 
-              <label>Hybrid
-                <input type="radio" id="hybrid"
-                  onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="hybrid"
-                ></input>
-              </label><br />
+              <option>Hybrid
+                {/* <input type="radio" id="hybrid"
+                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+                 name="regime" value="hybrid"
+                ></input> */}
+              </option>
 
+                </select>
 
 
             </fieldset>

@@ -35,9 +35,7 @@ export default function Landing() {
             </button> 
           </div>
 
-          {/* <button onClick={VAIS PARA A COMPONENT/FORMULARIO DO LOGIN}>Login</button>
-      
-      <button onClick={VAIS PARA A COMPONENT/FORMULARIO DO REGISTO}>Sign up</button> */}
+         
       <footer className={styles.fontAboutUs.verticalContainer2}>
           <span className={styles.fontAboutUs}>About-us</span><span className={styles.fontAboutUs}>FAQs</span>
           <a href="https://facebook.com" /> 
