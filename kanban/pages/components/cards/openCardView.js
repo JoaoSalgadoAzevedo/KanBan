@@ -2,12 +2,36 @@ export default function openCardView() {
   return (
     <div>
 
-BASICAMENTE ELE VAI FAZER DISPLAY DE TODA A INFORMAÇAO QUE ESTÁ GUARDADA NA BD; 
+      <span>{companyName}</span>
+      <span>{jobFunction}</span>
+      <span>{creationDate}</span>
 
-
-
-
+    
     </div>
+    
+    // // Card_Id: "_id",
+    // // User_Id: "_Id",
+    // stateFunnel: "string",
+    // creationDate: "data",
+    // observations: "string",
+    // companyName: "string",
+    // companylocation: "string",
+    // companyLink: "url",
+    // offerSource: "string",
+    // jobFunction: "string",
+    // salaryRangeMin: 0,
+    // salaryRangeMax: 0,
+    // offerLink: "url",
+    // regime: "string",
+    // nomeRecruiter: "string",
+    // emailRecruiter: "email",
+    // telRecruiter: 0,
+    // linkedinRecruiter: "irl",
+    // companyLink: "url",
+    // appointmentData: "data",
+    // appointmentLocation: "string",
+    // appoimentInformation: "string",
+    // lastAppointment: "data"
   )
 }
 

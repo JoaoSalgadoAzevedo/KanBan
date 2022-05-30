@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+
+
+.body {
+    display: flex;
+    position: absolute;
+    margin: 0px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #00B2CA 0%, rgba(39, 130, 142, 0) 100%), #113055;
+    align-items: center;
+    justify-content: center;
+  
+  }
+
+.container1 {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 85%;
+    width: 85%;
+    background: #FBFFFF;
+    border-radius: 93px;
+  }
+
+  .button1 {
+    background: #113055;
+    color: white;
+    box-shadow: 3px 7px 2px -4px rgb(0 0 0 / 25%);
+    border-radius: 24px;
+    position: relative;
+    width: 12vw;
+    height: 5vh;
+    font-family: 'Fira Sans Condensed';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.97);
+  }
+
+  .containerE1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    height: 85%;
+    width: 85%;
+    background: #FBFFFF;
+    border-radius: 93px;
+  }
+
+
+.containerD1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items:flex-start;
+    position:inherit;
+    height: 70vh;
+    background-color: #FBFFFF;
+  
+  }
+
+  .containerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+  .input {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+  }
+
+  .logo{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .imagem1{
+    display: flex;
+    margin-top: 45vh;
+  }
+
+  .footer{
+    display: flex;
+    position: absolute;
+    bottom: 21px;
+    
+  }

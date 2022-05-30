@@ -1,12 +1,17 @@
+//LOGIN
 import Head from 'next/head'
 import { useState } from "react"
+import {useRouter} from "next/router"
 
 export default function Login() {
+  const router = useRouter()
+  const routerLogin = useRouter()
   const [loginData, setloginData] = useState({
     EmailAddress: "aaa@aaa.aa",
     Password: "password"
   })
   const login = async () => {
+    
     const res = await fetch(
       '../../api/login', {
       body: JSON.stringify(loginData),
@@ -16,8 +21,13 @@ export default function Login() {
       method: "POST"
     })
     const json = await res.json()
+
+    //se a resposta for positiva, faz login
+    if(res.status(200)) {
+     routerLogin.push("/plataforma") 
+    }
     console.log(loginData, res.status, json)
-    localStorage.setItem("token", json.token)
+    
   }
 
   return (
@@ -34,7 +44,9 @@ export default function Login() {
           <p>Welcome to your new Job!</p>
         </aside>
 
-        <form onSubmit={(e) => { e.preventDefault(), login() }}>
+        <form onSubmit={(e) => { 
+          e.preventDefault(), 
+          login() }}>
 
           <label> Email
             <input
@@ -56,15 +68,16 @@ export default function Login() {
               required /></label>
 
           <button
-            value="Sign Up">
+            value="Sign Up"
+            onClick={ () => router.push('/plataforma')}>
             Login
           </button>
-            <h3>{JSON.stringify(loginData)}</h3>
+            {/* <h3>{JSON.stringify(loginData)}</h3> */}
         </form>
+        <button onClick={() => router.push('/')}>Go back</button>
 
         <footer>copyright</footer>
       </main>
     </>
   )
 }
-

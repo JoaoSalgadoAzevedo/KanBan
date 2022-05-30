@@ -1,4 +1,4 @@
-export default function closedCard(CardId, companyName, jobFunction, creationDate) {
+export default function CardThumbnail(CardId, companyName, jobFunction, creationDate) {
   return (
     
     <div>
@@ -7,7 +7,7 @@ export default function closedCard(CardId, companyName, jobFunction, creationDat
       <span>{jobFunction}</span>
       <span>{creationDate}</span>
 
-    
+
     </div>
   )
 }

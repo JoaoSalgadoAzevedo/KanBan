@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Dashboard from '../components/dashboard'
-import Menu from '../components/menu'
+import Menu from './menu'
 
 
 export default  function Plataforma() {
