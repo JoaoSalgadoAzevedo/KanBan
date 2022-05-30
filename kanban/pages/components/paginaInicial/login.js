@@ -17,6 +17,7 @@ export default function Login() {
     })
     const json = await res.json()
     console.log(loginData, res.status, json)
+    localStorage.setItem("token", json.token)
   }
 
   return (

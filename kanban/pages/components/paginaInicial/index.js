@@ -16,10 +16,11 @@ export default function Landing() {
           <p>Welcome to your new Job!</p>
 
           {/* BOTOES!!!! */}
-          <button label="Sign Up" >Sign Up</button>
+          <span>
+            <button label="Sign Up" >Sign Up</button>
 
-          <button label="Log In">Login</button>
-
+            <button label="Log In">Login</button>
+          </span>
           {/* <button onClick={VAIS PARA A COMPONENT/FORMULARIO DO LOGIN}>Login</button>
       
       <button onClick={VAIS PARA A COMPONENT/FORMULARIO DO REGISTO}>Sign up</button> */}
@@ -34,7 +35,7 @@ export default function Landing() {
       </main>
 
 
-    </div>
+    </div >
   )
 }
 

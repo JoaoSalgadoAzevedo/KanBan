@@ -1,14 +1,12 @@
-export default function closedCard() {
+export default function closedCard(CardId, companyName, jobFunction, creationDate) {
   return (
     
     <div>
 
+      <span>{companyName}</span>
+      <span>{jobFunction}</span>
+      <span>{creationDate}</span>
 
-    
-
-    <div>aqui vai ficar a company name</div>
-    <div>aqui vai ficar a working position</div>
-    <div>aqui vai ficar a data de criação</div>
     
     </div>
   )

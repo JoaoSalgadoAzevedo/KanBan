@@ -1,7 +1,7 @@
 import { createUser } from "../../../data/db"
 import { testEmail, testPassword, testPasswordConfirmation } from "../../../services/signup"
 
-export default async function (req, res) {
+export default async function apiSignUp(req, res) {
     if (req.method === "POST") {
         console.log(req.body)
 

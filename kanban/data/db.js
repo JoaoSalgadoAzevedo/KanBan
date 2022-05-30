@@ -1,15 +1,17 @@
-import { MongoClient } from "mongodb" 
+import { MongoClient, ObjectId } from "mongodb" 
+
 const URL = process.env.MONGO_URL ?? "mongodb://localhost:27017"
+
 const DB_NAME = "db_opplog"
 const COLLECTION_USERS = "db_users"
 const COLLECTION_CARDS = "db_cards"
+const COLLECTION_SESSIONS = "db_sessions"
 
 let client;
 
 export  async function connectToMongo() {
     try {
         if (!client) { client = await MongoClient.connect(URL)}
-        console.log(client)
         return client
     } catch (errors) {
         console.log(errors)
@@ -37,6 +39,20 @@ export  async function createUser(data) {
 
 // sign in
 export  async function createSession(data) {
-    const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_SESSIONS)
     return await collection.insertOne(data)
+}
+export  async function findUserID(token) {
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_SESSIONS)
+    console.log(token)
+    const sessionOfToken = await collection.findOne({ _id: ObjectId(token) })
+    const collectionUser = await getMongoCollection(DB_NAME, COLLECTION_USERS)
+    return await collectionUser.findOne({ _id: ObjectId(sessionOfToken.userId) })
+
+    
+}
+
+export  async function createCardOnMONGO(data) {
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
+    return await collection.insertOne({...data})
 }
