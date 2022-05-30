@@ -12,6 +12,16 @@
 
 }
 
+.logoDivlock{
+  height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
 .container1 {
   display: flex;
   flex-direction: row;
@@ -25,7 +35,7 @@
 .fontQuote {
   font-family: 'Fira Sans Condensed';
   font-style: normal;
-  font-size: 25px;
+  font-size: 40px;
   font-weight: 800;
   line-height: 60px;
   background: linear-gradient(180deg, #00B2CA 0%, #113055 100%);
@@ -33,24 +43,41 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   /* text-fill-color: transparent; */
-}
-
+} 
 
 
 .fontAboutUs{
-    font-family: 'Fira Sans Condensed';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 25px;
-    line-height: 30px;
-    display: flex;
-     justify-content: center;
-    flex-direction: row;
-    color: #113055
+  font-family: 'Fira Sans Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+   justify-content: center;
+  flex-direction: row;
+  color: #113055;
+  text-decoration: none;
+}
+
+.fontAboutUs:hover{
+  font-family: 'Fira Sans Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+   justify-content: center;
+  flex-direction: row;
+  background: linear-gradient(180deg, #113055 0%, #00B2CA 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+/* text-fill-color: transparent; */
 }
   
 
 .fontCopyright{
+  display: flex;
   font-family: 'Amiko';
   font-style: normal;
   font-weight: 400;
@@ -78,6 +105,12 @@
 
 }
 
+.button1:active {
+  background: linear-gradient(180deg, #113055 0%, #00B2CA 100%);
+  box-shadow: 3px 7px 2px -4px rgba(0, 0, 0, 0.25);
+  transform: translateY(4px);
+}
+
 .button1 {
   
   background: #113055;
@@ -97,17 +130,19 @@
 
 .verticalContainer1{
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   width: 100%;
+  padding: 1rem;
+  
 }
 .verticalContainer2{
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   width: 100%;
+  margin-top: 25%;
 }
-
 
 
 .boxInfo {

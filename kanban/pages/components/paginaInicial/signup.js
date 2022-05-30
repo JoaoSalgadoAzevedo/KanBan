@@ -29,10 +29,11 @@ export default function Signup() {
       method: "POST"
     })
     const json = await res.json()
-    if(res.json() === 200) {
-      routerLogin.push("/components/paginaInicial/login")
-    }
+    // if(res.status(200) ) {
+    //   
+    // }
     console.log(signupData, res.status, json)
+    routerLogin.push("/components/paginaInicial/login")
     
   }
 
