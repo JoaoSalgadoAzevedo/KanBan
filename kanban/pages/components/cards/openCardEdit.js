@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import styles from "../../../styles/Home.module.css"
+import form from "../../../styles/formulario.module.css"
 export default function OpenCardEdit() {
 
   const [cardData, setCardData] = useState({
@@ -57,35 +59,46 @@ export default function OpenCardEdit() {
     //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: CardData.XXXXX
     <div>
       <span>
-        <form onSubmit={(e) => {
+        <form
+        className={form.formMaindiv} 
+        onSubmit={(e) => {
           e.preventDefault()
           editCard()
           //AQUI LEVA A FUNCAO DE SUBMIT
         }}>
           {/* <h3>{cardData}</h3> */}
-          <label>Observations</label><br />
-          <input onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></input><br />
+          {/* <label>Observations</label><br />
+          <input onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></input><br /> */}
 
+
+          <div className={form.topcontainer}>
+          <div className={form.companiDiv}>
           <div className="companyINFO" >
 
-            <fieldset>
-              <h3>Informações da empresa</h3>
+            <fieldset className={form.formFormat}>
+              <h3 className={form.fontDisplay}>Informações da empresa</h3>
 
-              <label>Company Name</label><br />
+              <label className={form.fontTitle}>Company Name</label><br />
               <input
+              className={form.placeHolderBox}
                 type="text"
                 autoComplete="off"
                 onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
                 placeholder='Company Name'>
               </input><br />
 
-              <label>Company URL</label><br />
-              <input type="url"
+              <label className={form.fontTitle}>Company URL</label><br />
+              <input 
+              className={form.placeHolderBox}
+              type="url"
                 onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
                 name="description" placeholder="Website"></input><br />
 
-              <label>Company Location</label><br />
-              <input type="text" name=""
+              <label className={form.fontTitle}>Company Location</label><br />
+              <input 
+              className={form.placeHolderBox}
+              type="text" 
+              name=""
                 onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
                 placeholder='Address'></input><br />
             </fieldset>
@@ -93,37 +106,48 @@ export default function OpenCardEdit() {
 
           </div>
           <div className="functionDATA" >
-            <fieldset>
+            <fieldset className={form.formFormat}>
               <legend>
 
 
-                <h3>Informações da Função</h3>
+                <h3 className={form.fontDisplay}>Informações da Função</h3>
               </legend>
 
-              <label>Job Function</label><br />
-              <input type="text" autoComplete="off"
+              <label className={form.fontTitle}>Job Function</label><br />
+              <input
+              className={form.placeHolderBox} 
+              type="text" 
+              autoComplete="off"
                 onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
                 placeholder='Working Position'></input>
 
-              <br /><label>Offer Source</label><br />
-              <input type="url"
+              <br /><label className={form.fontTitle}>Offer Source</label><br />
+              <input
+              className={form.placeHolderBox} 
+              type="url"
                 onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
                 name="description" placeholder='Where did you find it?' />
 
-              <br /><label>Offer Link</label><br />
-              <input type="url"
+              <br /><label className={form.fontTitle}>Offer Link</label><br />
+              <input
+              className={form.placeHolderBox} 
+              type="url"
                 onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
                 name="description" placeholder='Keep here the link' />
 
-              <br /><label>Salary Range Between</label>
-              <input type="number"
+              <br /><label className={form.fontTitle}>Salary Range Between</label>
+              <input
+              className={form.placeHolderBox} 
+              type="number"
                 onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
                 name="salary" min="200" max="5000"  step="25" />
               <label>-</label>
-              <input type="number"
+              <input
+              className={form.placeHolderBox} 
+              type="number"
                 onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
                 name="salary" min="200" max="5000" step="25" />
-                <select>
+                <select className={form.placeHolderBox}>
                   
                   <option>Euro   €</option>
                   <option>Dolar    $</option>
@@ -134,8 +158,8 @@ export default function OpenCardEdit() {
 
 
 
-              <label>Regime:</label>
-              <select>
+                <label className={form.fontTitle}>Regime:</label>
+                <select className={form.placeHolderBox}>
 
 
               <option>Presencial
@@ -166,73 +190,97 @@ export default function OpenCardEdit() {
             </fieldset>
           </div>
 
-
-
-          <div className="recruiterINFO" >
-            <fieldset>
-              <h3>Informações do entrevistador</h3>
-
-              <label>Name</label><br />
-              <input type="text" autoComplete="off"
-                onChange={(e) => setCardData({ ...cardData, nomeRecruiter: e.target.value })}
-                placeholder='Person Name'></input><br />
-
-              <label>Email</label><br />
-              <input type="email"
-                onChange={(e) => setCardData({ ...cardData, emailRecruiter: e.target.value })}
-                name="description" placeholder='Do you have an email?' />
-
-              <br /><label>Contact</label><br />
-              <input type="number"
-                onChange={(e) => setCardData({ ...cardData, telRecruiter: e.target.value })}
-                name="and contact?" />
-
-              <br /><label>Linkedin?</label><br />
-              <input type="url" name="description"
-                onChange={(e) => setCardData({ ...cardData, linkedinRecruiter: e.target.value })}
-                placeholder="Linkedin?" autoComplete="off" /><br />
-            </fieldset>
-
           </div>
-          <div className="interviewINFO" >
-
-            <h3>Informações da entrevista</h3>
-
-            <label>Location</label>
-            <input type="text" autoComplete="off"
-              onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
-              placeholder='Address'></input><br />
-
-            <label>Next Interview</label>
-            <input type="datetime-local"
-              onChange={(e) => setCardData({ ...cardData, appointmentData: e.target.value })}
-              name="description" min="19/05/2022" />
-
-            <label>Last interview</label>
-            <input type="datetime-local"
-              onChange={(e) => setCardData({ ...cardData, lastAppointment: e.target.value })}
-              name="description" />
-
-            <br /><label>Additional Info</label><br />
-            <input type="text" name="description"
-              onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
-              placeholder="Observations" autoComplete="off" /><br />
+        <div>
+          <label className={form.fontDisplay}>Observations</label><br />
+          <textarea className={form.placeholder2} onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></textarea><br />
+        </div>
+        </div>
 
 
+
+        <div className={form.bottomcontainer}>
+              <div className="recruiterINFO" >
+                <fieldset className={form.formFormat}>
+                  <h3 className={form.fontDisplay}>Informações do entrevistador</h3>
+
+                  <label className={form.fontTitle}>Name</label><br />
+                  <input className={form.placeHolderBox} type="text" autoComplete="off"
+                    onChange={(e) => setCardData({ ...cardData, nomeRecruiter: e.target.value })}
+                    placeholder='Person Name'></input><br />
+
+                  <label className={form.fontTitle}>Email</label><br />
+                  <input type="email"
+                    className={form.placeHolderBox}
+                    onChange={(e) => setCardData({ ...cardData, emailRecruiter: e.target.value })}
+                    name="description" placeholder='Do you have an email?' />
+
+                  <br /><label className={form.fontTitle}>Contact</label><br />
+                  <input type="number"
+                    className={form.placeHolderBox}
+                    onChange={(e) => setCardData({ ...cardData, telRecruiter: e.target.value })}
+                    name="and contact?" />
+
+                  <br /><label className={form.fontTitle}>Linkedin</label><br />
+                  <input type="url"
+                    className={form.placeHolderBox}
+                    name="description"
+                    onChange={(e) => setCardData({ ...cardData, linkedinRecruiter: e.target.value })}
+                    placeholder="Linkedin?" autoComplete="off" /><br />
+                </fieldset>
+
+              </div>
+              <div className={form.containerCorrect.interviewINFO}>
+
+                <h3 className={form.fontDisplay}>Informações da entrevista</h3>
+
+                <label className={form.fontTitle}>Location</label>
+                <input type="text"
+                  className={form.placeHolderBox} 
+                  autoComplete="off"
+                  onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
+                  placeholder='Address'></input><br />
+
+                <label className={form.fontTitle}>Next Interview</label>
+                <input type="datetime-local"
+                  className={form.placeHolderBox}
+                  onChange={(e) => setCardData({ ...cardData, appointmentData: e.target.value })}
+                  name="description" min="19/05/2022" /><br />
+
+                <label className={form.fontTitle}>Last interview</label>
+                <input type="datetime-local"
+                  className={form.placeHolderBox}
+                  onChange={(e) => setCardData({ ...cardData, lastAppointment: e.target.value })}
+                  name="description" />
+
+                <br />
+
+
+              </div>
+              <div>
+               <label className={form.fontDisplay}>Additional Info</label><br />
+                <input type="text"
+                  className={form.placeholder2}
+                  name="description"
+                  onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
+                  placeholder="Observations" autoComplete="off" /><br /> 
+              </div>
+              
           </div>
 
-
-          <br /><br /><input type="submit"></input>
-          <input type="reset"></input>
+        <span>
+          <br /><br /><input className={styles.button1} type="submit"></input>
+          <input className={styles.button1} type="reset"></input>
+        </span>
+          
 
 
         </form>
       </span>
       <span>
 
-        AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO
       </span>
-
+ {/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
 
     </div>
   )

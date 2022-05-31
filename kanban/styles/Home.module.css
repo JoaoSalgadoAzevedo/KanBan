@@ -153,3 +153,8 @@ background-clip: text;
   background: linear-gradient(180deg, #00B2CA 0%, #113055 73.44%);
   border-radius: 46px 24px 24px 240px;
 }
+
+.image{
+  width: 1rem;
+  
+}
