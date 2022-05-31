@@ -24,7 +24,7 @@ export default function Login() {
     const json = await res.json()
 
     //se a resposta for positiva, faz login
-    if(res.status(200)) {
+    if(res.status === 200) {
      routerLogin.push("/plataforma") 
     }
     console.log(loginData, res.status, json)
@@ -75,8 +75,8 @@ export default function Login() {
 
           <button
             className={styles.button1}
-            value="Sign Up"
-            onClick={ () => router.push('/plataforma')}>
+            value="Login"
+            onClick={ () => login()}>
             Login
           </button>
             {/* <h3>{JSON.stringify(loginData)}</h3> */}

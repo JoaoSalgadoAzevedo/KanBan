@@ -1,33 +1,51 @@
-import {useState} from "react"
+import { useState, useEffect } from "react"
+import CardThumbnail from "../cards/CardThumbnail"
 export default function Coluna1() {
 
-const [cards_Col1, setcards_Col1] = useState([])
+  const [cards_Col1, setCards_Col1] = useState([])
 
-  const fetch = async () => {
-    console.log("olá")
-    const res = await fetch(
-      '../../api/columns/column1', {
+  useEffect(() => {
+    async function CallBack() {
+      const res = await fetch(
+        '../../api/columns/column1', {
         headers: {
-        "Content-Type": "application/json",
-        "Authenticate": localStorage.getItem("token")
-      },
-      method: "GET"
-    })
-    console.log("Adeus")
-      const data = await res.json() 
-      setcards_Col1(data)
-  }
+          "Content-Type": "application/json",
+          "Authenticate": localStorage.getItem("token")
+        },
+        method: "GET"
+      })
+      console.log(res)
+      const json = await res.json()
+      setCards_Col1(json.a)
+      console.log("Fim do UseEffect")
+    }
+    CallBack()
+  }, [])
 
-  return (
+
+return (
 
 
-    <div className='colunas'>
-      <h2>Interesse</h2>
-      <button className="botaoAdicionar"></button>
+  <div className='colunas'>
+    <h2>Interesse</h2>
+    <button className="botaoAdicionar">BOTAO</button>
 
-      <span>{cards_Col1}</span>
+    {
+      
+      cards_Col1.map(e => < CardThumbnail 
+        key={e._id} 
+        CardId={e._id} 
+        companyName={e.companyName} 
+        jobFunction={e.jobFunction}
+        creationDate={e.creationDate} /> )
 
-    </div>
-  )
+
+    }
+
+{/* CardId, companyName, jobFunction, creationDate */}
+    {/* <span>{cards_Col1}</span> */}
+
+  </div>
+)
 }
 
