@@ -2,34 +2,47 @@ import { useState } from "react"
 export default function OpenCardEdit() {
 
   const [cardData, setCardData] = useState({
-    // Card_Id: "_id",
-    // User_Id: "_Id",
-    stateFunnel: "string",
-    creationDate: "data",
-    observations: "string",
-    companyName: "string",
-    companylocation: "string",
-    companyLink: "url",
-    offerSource: "string",
-    jobFunction: "string",
-    salaryRangeMin: 0,
-    salaryRangeMax: 0,
-    offerLink: "url",
-    regime: "string",
-    nomeRecruiter: "string",
-    emailRecruiter: "email",
-    telRecruiter: 0,
-    linkedinRecruiter: "irl",
-    companyLink: "url",
-    appointmentData: "data",
-    appointmentLocation: "string",
-    appoimentInformation: "string",
-    lastAppointment: "data"
+    stateFunnel: "",
+    creationDate: "",
+    observations: "",
+    companyName: "",
+    companylocation: "",
+    companyLink: "",
+    offerSource: "",
+    jobFunction: "",
+    salaryRangeMin: "",
+    salaryRangeMax: "",
+    offerLink: "",
+    regime: "",
+    nomeRecruiter: "",
+    emailRecruiter: "",
+    telRecruiter: "",
+    linkedinRecruiter: "",
+    companyLink: "",
+    appointmentData: "",
+    appointmentLocation: "",
+    appoimentInformation: "",
+    lastAppointment: ""
   });
 
-  const creatCard = async () => {
+  useEffect(() => {
+    async function callCard() {
+      const res = await fetch(
+        '../../api/catchCard', {
+        method: "GET"
+      })
+      console.log(res)
+      const json = await res.json()
+      setCardData(json.a)
+      console.log("Fim do UseEffect")
+    }
+    callCard()
+  }, [])
+
+
+  const editCard = async () => {
     const res = await fetch(
-      '../../api/createCard', {
+      '../../api/editCard', {
       body: JSON.stringify(cardData),
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +59,7 @@ export default function OpenCardEdit() {
       <span>
         <form onSubmit={(e) => {
           e.preventDefault()
-          creatCard()
+          editCard()
           //AQUI LEVA A FUNCAO DE SUBMIT
         }}>
           {/* <h3>{cardData}</h3> */}

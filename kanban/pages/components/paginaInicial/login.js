@@ -21,11 +21,13 @@ export default function Login() {
       },
       method: "POST"
     })
+
     const json = await res.json()
 
     //se a resposta for positiva, faz login
     if(res.status === 200) {
      routerLogin.push("/plataforma") 
+     localStorage.setItem("tokenG3", json.token)
     }
     console.log(loginData, res.status, json)
     
@@ -76,10 +78,9 @@ export default function Login() {
           <button
             className={styles.button1}
             value="Login"
-            onClick={ () => login()}>
-            Login
+            > Login
           </button>
-            {/* <h3>{JSON.stringify(loginData)}</h3> */}
+            
         </form>
         
 

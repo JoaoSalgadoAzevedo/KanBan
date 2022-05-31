@@ -1,6 +1,7 @@
 import { useState } from "react"
+import styles from "../../../styles/colunas.module.css"
 export default function QuickAdd() {
-    const [QuickAdd, setQuickAdd] = useState({
+  const [QuickAdd, setQuickAdd] = useState({
     // Card_Id: "_id",
     // User_Id: "_Id",
     stateFunnel: "string",
@@ -8,7 +9,7 @@ export default function QuickAdd() {
     observations: "string",
     companyName: "string",
     companylocation: "string",
-    companyLink:"url",
+    companyLink: "url",
     offerSource: "string",
     jobFunction: "string",
     salaryRangeMin: 0,
@@ -26,7 +27,7 @@ export default function QuickAdd() {
     lastAppointment: "data"
   })
 
-  
+
   const submit = async () => {
     console.log("olá")
     const res = await fetch(
@@ -34,7 +35,7 @@ export default function QuickAdd() {
       body: JSON.stringify(QuickAdd),
       headers: {
         "Content-Type": "application/json",
-        "Authenticate": localStorage.getItem("token")
+        "Authenticate": localStorage.getItem("tokenG3")
       },
       method: "POST"
     })
@@ -42,17 +43,17 @@ export default function QuickAdd() {
     const json = await res.json()
     console.log(QuickAdd, res.status, json)
   }
- 
-   
+
+
   return (
     //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: CardData.XXXXX
-    <div>
+    <div className={styles.popup}>
       <span>
         <form onSubmit={(e) => {
           e.preventDefault(),
-          submit()
+            submit()
         }}>
-      
+
 
           <div className="companyINFO" >
 
@@ -72,7 +73,7 @@ export default function QuickAdd() {
                 onChange={(e) => setQuickAdd({ ...QuickAdd, companyLink: e.target.value })}
                 name="description" placeholder="Website"></input><br />
 
-        
+
             </fieldset>
 
 
@@ -90,44 +91,110 @@ export default function QuickAdd() {
                 onChange={(e) => setQuickAdd({ ...QuickAdd, jobFunction: e.target.value })}
                 placeholder='Working Position'></input>
 
-        
 
-           
+
+
 
               <br /><label>Salary Range Between</label>
               <input type="number"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, salaryRangeMin: e.target.value })}
-                name="salary" min="200" max="5000" value="800" step="25"/>
+                name="salary" min="200" max="5000" step="25" />
               <label>-</label>
               <input type="number"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, salaryRangeMax: e.target.value })}
-                name="salary" min="200" max="5000" value="800" step="25"/><br />
+                name="salary" min="200" max="5000" step="25" />
+              <select>
+
+                <option>Euro   €</option>
+                <option>Dolar    $</option>
+                <option>Cenas ai</option>
+
+              </select><br />
 
 
 
 
-              <h5>Regime:</h5>
-              <label>Presencial
-                <input type="radio" id="Presencial"
-                  onChange={(e) => setQuickAdd({ ...QuickAdd, regime: e.target.value })}
+              <label>Regime:</label>
+              <select>
+
+
+                <option>Presencial
+                  {/* <input type="radio" id="Presencial"
+                  //onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
                   name="regime" value="presencial"
-                  checked ></input>
-              </label><br />
+                  checked ></input> */}
+                </option>
 
 
-              <label >Remote
-                <input type="radio" id="remote"
-                  onChange={(e) => setQuickAdd({ ...QuickAdd, regime: e.target.value })}
+                <option >Remote
+                  {/* <input type="radio" id="remote"
+                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
                   name="regime" value="remote"
-                ></input>
-              </label><br />
+                ></input> */}
+                </option>
 
-              <label>Hybrid
-                <input type="radio" id="hybrid"
-                  onChange={(e) => setQuickAdd({ ...QuickAdd, regime: e.target.value })}
-                  name="regime" value="hybrid"
-                ></input>
-              </label><br />
+                <option>Hybrid
+                  {/* <input type="radio" id="hybrid"
+                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+                 name="regime" value="hybrid"
+                ></input> */}
+                </option>
+
+              </select>
+
+              <label>StateFunnel</label>
+
+              <select>
+
+
+                <option>Interest
+
+                </option>
+
+
+                <option >Application Sent
+
+                </option>
+
+                <option>Interview
+
+                </option>
+                <option>Awaiting Response
+
+                </option>
+                <option>Decision
+
+                </option>
+
+                <select>
+
+
+                  <option>Presencial
+                    {/* <input type="radio" id="Presencial"
+                  //onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+                  name="regime" value="presencial"
+                  checked ></input> */}
+                  </option>
+
+
+                  <option >Remote
+                    {/* <input type="radio" id="remote"
+                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+                  name="regime" value="remote"
+                ></input> */}
+                  </option>
+
+                  <option>Hybrid
+                    {/* <input type="radio" id="hybrid"
+                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
+                 name="regime" value="hybrid"
+                ></input> */}
+                  </option>
+
+                </select>
+
+
+              </select>
 
 
 

@@ -7,7 +7,7 @@ export default function Coluna4() {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        '../../api/columns/column?stateFunnel=Awaiting Response', {
+        `../../api/columns/column?stateFunnel=Awaiting Response&auth=${localStorage.getItem("tokenG3")}`, {
           headers: {
           "Content-Type": "application/json",
           "Authenticate": localStorage.getItem("token")

@@ -29,12 +29,13 @@ export default function Signup() {
       method: "POST"
     })
     const json = await res.json()
-    if(res.status === 200) {
-      routerLogin.push("/login")
+
+   if(res.status === 200) {
+      routerLogin.push("/components/paginaInicial/login")
       
-    }
+   }
     console.log(signupData, res.status, json)
-    routerLogin.push("/components/paginaInicial/login")
+   
     
   }
 
@@ -111,8 +112,7 @@ export default function Signup() {
 
           <button className={styles.button1}
             value="Sign Up"
-            onClick={ () => submit()}>
-              Submit
+            >Submit
           </button>
            
         </form>

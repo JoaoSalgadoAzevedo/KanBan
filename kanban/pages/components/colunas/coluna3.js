@@ -7,7 +7,7 @@ export default function Coluna3() {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        '../../api/columns/column?stateFunnel=Interview', {
+        `../../api/columns/column?stateFunnel=Interview&auth=${localStorage.getItem("tokenG3")}`, {
           headers: {
           "Content-Type": "application/json",
           "Authenticate": localStorage.getItem("token")

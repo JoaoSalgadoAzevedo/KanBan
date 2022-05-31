@@ -12,7 +12,6 @@ export default  function Menu() {
     <link rel="icon" href="/favicon.ico" />
   </Head>
 
-    <body>
     <div className='menuBar'>
     <p>
       
@@ -20,7 +19,6 @@ export default  function Menu() {
 
     </div>
 
-    </body>
 
     </>
     

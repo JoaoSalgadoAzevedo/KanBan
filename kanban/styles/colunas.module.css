@@ -42,3 +42,7 @@
     flex-direction: row;
     
 }
+
+.popup {
+    position: absolute;
+}

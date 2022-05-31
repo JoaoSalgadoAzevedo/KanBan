@@ -43,8 +43,8 @@ export  async function createSession(data) {
     return await collection.insertOne(data)
 }
 export  async function findUserID(token) {
-    const collection = await getMongoCollection(DB_NAME, COLLECTION_SESSIONS)
     console.log(token)
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_SESSIONS)
     const sessionOfToken = await collection.findOne({ _id: ObjectId(token) })
     const collectionUser = await getMongoCollection(DB_NAME, COLLECTION_USERS)
     return await collectionUser.findOne({ _id: ObjectId(sessionOfToken.userId) })
@@ -52,7 +52,7 @@ export  async function findUserID(token) {
     
 }
 
-export  async function createCardOnMONGO(data) {
+export  async function createCardOnMONGO(data, user) {
     const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
-    return await collection.insertOne({...data})
+    return await collection.insertOne({...data, userId: user._id})
 }

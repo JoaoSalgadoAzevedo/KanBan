@@ -4,11 +4,11 @@ export async function createCardOnBD(token, data, res){
 	const user = await findUserID(token)
 
     if(user){
-        createCardOnMONGO(data, user)
+        await createCardOnMONGO(data, user)
             return res.status(200).json({message: "Your card was created succesfully"})
 
     }
-    console.log("SERVICES")
+    
     return res.status(404).json({ message: "Algo de errado não está certo " })
 
 
