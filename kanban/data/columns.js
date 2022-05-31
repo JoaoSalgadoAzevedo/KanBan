@@ -8,7 +8,7 @@ const COLLECTION_USERS = "db_users"
 const COLLECTION_CARDS = "db_cards"
 const COLLECTION_SESSIONS = "db_sessions"
 
-export async function findCardsByState() {
+export async function findCardsByState(column) {
     const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
-    return await collection.find({stateFunnel: "Interest"}).toArray()
+    return await collection.find(column).toArray()
 }

@@ -7,8 +7,8 @@ export default function Coluna1() {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        '../../api/columns/column1', {
-        headers: {
+        '../../api/columns/column?stateFunnel=Interest', {
+          headers: {
           "Content-Type": "application/json",
           "Authenticate": localStorage.getItem("token")
         },

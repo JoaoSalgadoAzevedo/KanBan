@@ -1,12 +1,51 @@
-export default  function Coluna4() {
-    return (
-      <div className='colunas'>
-          <h2>Aguardar Resposta</h2>
-          aqui vai ser feito um map ou filter para criar as divs
-          que vão estar na coluna
+import { useState, useEffect } from "react"
+import CardThumbnail from "../cards/CardThumbnail"
+export default function Coluna4() {
+
+  const [cards_Col4, setCards_Col4] = useState([])
+
+  useEffect(() => {
+    async function CallBack() {
+      const res = await fetch(
+        '../../api/columns/column?stateFunnel=Awaiting Response', {
+          headers: {
+          "Content-Type": "application/json",
+          "Authenticate": localStorage.getItem("token")
+        },
+        method: "GET"
+      })
+      console.log(res)
+      const json = await res.json()
+      setCards_Col4(json.a)
+      console.log("Fim do UseEffect")
+    }
+    CallBack()
+  }, [])
+
+
+return (
+
+
+  <div className='colunas'>
+    <h2>Awaiting Response</h2>
+   
+
+    {
       
-      </div>
-    )
-  }
-  
-  
+      cards_Col4.map(e => < CardThumbnail 
+        key={e._id} 
+        CardId={e._id} 
+        companyName={e.companyName} 
+        jobFunction={e.jobFunction}
+        creationDate={e.creationDate} /> )
+
+
+    }
+
+{/* CardId, companyName, jobFunction, creationDate */}
+    {/* <span>{cards_Col1}</span> */}
+
+  </div>
+)
+}
+
