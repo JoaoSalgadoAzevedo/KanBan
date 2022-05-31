@@ -17,7 +17,7 @@ export default function Landing() {
 
         <content className={styles.containerE1}>
         <div className={styles.logoDivlock}>
-          <img src="../../../public/Vector.png" alt="logo" />
+        <img className={styles.image2} src="logo.svg"></img>
           <span className={styles.fontQuote}><p>Welcome to your new Job!</p></span>
         </div>
 
@@ -39,18 +39,28 @@ export default function Landing() {
           </div>
 
          
-      <footer className={styles.fontAboutUs.verticalContainer2}>
+          <footer className={styles.verticalContainer2}>
           <span className={styles.fontAboutUs}>
             <a href="https://github.com/JoaoSalgadoAzevedo/KanBan" className={styles.fontAboutUs}>About-us</a></span>
           <span className={styles.fontAboutUs}>
             <a href="https://github.com/JoaoSalgadoAzevedo/KanBan" className={styles.fontAboutUs}>
               FAQs</a></span>
-          <a href="https://facebook.com" /> 
+          <a href="https://www.facebook.com/douglas.lourenco.3/"><img src="Facebook.svg"></img></a>
+          <a href="https://github.com/Dougloness89"><img src="Github.svg"></img></a>
+          <a href="https://www.instagram.com/dougloness/"><img src="Instagram.svg"></img></a>
      </footer>
         </content>
 
         <aside className={styles.containerD1}>
           <div className={styles.boxInfo}>
+            <span><img className={styles.image}src="Clip.svg"></img></span>
+            <span className={styles.span1}><h3 className={styles.description2}>What you will find?</h3><p className={styles.description}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacus vulputate at consectetur egestas ut rhoncus quis. 
+            Tincidunt lorem maecenas porttitor massa nisl mollis lacus id dolor. Amet est mattis amet id quis cum ac accumsan. 
+            Eu proin odio enim vulputate dictum cras nullam consectetur. Fringilla nunc vel sagittis ut. Amet porta fermentum consectetur in ipsum pretium. 
+            Cursus tortor enim ac enim nulla ultrices magnis quisque sed. Etiam erat ut velit convallis cursus sit lectus in vel. 
+            Lectus in libero, ornare faucibus id viverra consequat egestas dolor. Enim sed at ullamcorper proin duis metus, metus. 
+            Semper urna egestas nulla morbi ligula.</p></span>
 
           </div>
           <span className={styles.fontCopyright}><p>©2022 Opplog. All rights reserved</p></span>

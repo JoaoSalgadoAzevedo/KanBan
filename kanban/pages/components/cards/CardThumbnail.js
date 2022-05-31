@@ -8,6 +8,7 @@ export default function CardThumbnail({ CardId, companyName, jobFunction, creati
       <p>{companyName}</p>
       <p>{jobFunction}</p>
       <p>{creationDate}</p>
+      <p>{CardId}</p>
 
 
 

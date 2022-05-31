@@ -66,19 +66,15 @@ export default function OpenCardEdit() {
           editCard()
           //AQUI LEVA A FUNCAO DE SUBMIT
         }}>
-          {/* <h3>{cardData}</h3> */}
-          {/* <label>Observations</label><br />
-          <input onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></input><br /> */}
-
-
+        
           <div className={form.topcontainer}>
           <div className={form.companiDiv}>
           <div className="companyINFO" >
 
             <fieldset className={form.formFormat}>
-              <h3 className={form.fontDisplay}>Informações da empresa</h3>
+              <h3 className={form.fontDisplay}>Company INFO</h3>
 
-              <label className={form.fontTitle}>Company Name</label><br />
+              <label className={form.fontTitle}>Co. Name</label><br />
               <input
               className={form.placeHolderBox}
                 type="text"
@@ -87,14 +83,14 @@ export default function OpenCardEdit() {
                 placeholder='Company Name'>
               </input><br />
 
-              <label className={form.fontTitle}>Company URL</label><br />
+              <label className={form.fontTitle}>Does it have a website?</label><br />
               <input 
               className={form.placeHolderBox}
               type="url"
                 onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
                 name="description" placeholder="Website"></input><br />
 
-              <label className={form.fontTitle}>Company Location</label><br />
+              <label className={form.fontTitle}>From where?</label><br />
               <input 
               className={form.placeHolderBox}
               type="text" 
@@ -110,7 +106,7 @@ export default function OpenCardEdit() {
               <legend>
 
 
-                <h3 className={form.fontDisplay}>Informações da Função</h3>
+                <h3 className={form.fontDisplay}>Job Function</h3>
               </legend>
 
               <label className={form.fontTitle}>Job Function</label><br />
@@ -158,33 +154,66 @@ export default function OpenCardEdit() {
 
 
 
-                <label className={form.fontTitle}>Regime:</label>
-                <select className={form.placeHolderBox}>
+                <label className={form.fontTitle} id="Regime">Regime:</label>
+                <input
+                className={form.placeHolderBox}
+                list="regimes"
+                id="Regime"
+                name="regimes"
+                placeholder="Selecione..." />
+                
+                
+                <datalist  id="regimes">
 
 
-              <option>Presencial
-                {/* <input type="radio" id="Presencial"
-                  //onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="presencial"
-                  checked ></input> */}
+              <option value="Presencial">
+               
               </option>
 
 
-              <option >Remote
-                {/* <input type="radio" id="remote"
-                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="remote"
-                ></input> */}
+              <option value="Remote">
+               
               </option>
 
-              <option>Hybrid
-                {/* <input type="radio" id="hybrid"
-                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                 name="regime" value="hybrid"
-                ></input> */}
+              <option value="Hybrid">
+                
               </option>
 
-                </select>
+                </datalist>
+                <label className={form.fontTitle} id="Estado">State Funnel:</label>
+                <input
+                className={form.placeHolderBox}
+                list="state"
+                id="Estado"
+                name="state"
+                placeholder="Selecione..." />
+                
+                
+                <datalist  id="state">
+
+
+              <option value="Interest">
+               
+              </option>
+
+
+              <option value="Application Sent">
+               
+              </option>
+
+              <option value="Interview">
+                
+              </option>
+
+              <option value="Awaiting Response">
+                
+              </option>
+
+              <option value="Decision">
+                
+              </option>
+
+                </datalist>
 
 
             </fieldset>
@@ -202,7 +231,7 @@ export default function OpenCardEdit() {
         <div className={form.bottomcontainer}>
               <div className="recruiterINFO" >
                 <fieldset className={form.formFormat}>
-                  <h3 className={form.fontDisplay}>Informações do entrevistador</h3>
+                  <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
 
                   <label className={form.fontTitle}>Name</label><br />
                   <input className={form.placeHolderBox} type="text" autoComplete="off"
@@ -232,7 +261,7 @@ export default function OpenCardEdit() {
               </div>
               <div className={form.containerCorrect.interviewINFO}>
 
-                <h3 className={form.fontDisplay}>Informações da entrevista</h3>
+                <h3 className={form.fontDisplay}>Interview</h3>
 
                 <label className={form.fontTitle}>Location</label>
                 <input type="text"

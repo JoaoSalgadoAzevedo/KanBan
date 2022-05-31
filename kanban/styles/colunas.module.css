@@ -8,34 +8,6 @@
    
 }
 
-.colunas2{
-    display: inline-flex;
-    background-color: yellow;
-
-    width: 30vw;
-}
-
-.colunas3{
-    display: inline-flex;
-    background-color: green;
-   
-    width: 30vw;
-}
-
-.colunas4{
-    background-color: red;
-
-    display: inline-flex;
-    width: 30vw;
-}
-
-.colunas5{
-    
-    width: 30vw;
-    background-color: fuchsia;
-    display: inline-flex;
-}
-
 .paginaDash{
     background-color: aquamarine;
     display: inline-flex;

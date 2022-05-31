@@ -33,7 +33,10 @@ export default function Coluna1() {
       className="botaoAdicionar">Add Card</button>
       {addCard && <QuickAdd />}
   
-      {
+     <h2>
+       
+       
+       {
         
         cards_Col1.map(e => < CardThumbnail 
           key={e._id} 
@@ -44,6 +47,9 @@ export default function Coluna1() {
   
   
       }
+       
+       </h2> 
+       
   
   {/* CardId, companyName, jobFunction, creationDate */}
       {/* <span>{cards_Col1}</span> */}

@@ -1,12 +1,17 @@
 export default function openCardView() {
+
+
+  //aqui provavelmente será um useEffect para ir buscar a informaçao ao backend
+
+
   return (
     <div>
-
+{/* 
       <span>{companyName}</span>
       <span>{jobFunction}</span>
       <span>{creationDate}</span>
 
-    
+     */}
     </div>
     
     // // Card_Id: "_id",

@@ -1,5 +1,7 @@
 import { useState } from "react"
-import styles from "../../../styles/colunas.module.css"
+// import styles from "../../../styles/colunas.module.css"
+import styles from "../../../styles/Home.module.css"
+import form from "../../../styles/formulario.module.css"
 export default function QuickAdd() {
   const [QuickAdd, setQuickAdd] = useState({
     // Card_Id: "_id",
@@ -49,27 +51,33 @@ export default function QuickAdd() {
     //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: CardData.XXXXX
     <div className={styles.popup}>
       <span>
-        <form onSubmit={(e) => {
+        <form
+        className={form.formMaindiv} 
+        onSubmit={(e) => {
           e.preventDefault(),
             submit()
         }}>
 
-
+{/* <div className={form.topcontainer}>
+          <div className={form.companiDiv}></div> */}
           <div className="companyINFO" >
 
-            <fieldset>
-              <h3>Informações da empresa</h3>
+          <fieldset className={form.formFormat}>
+          <h3 className={form.fontDisplay}>Company INFO</h3>
 
-              <label>Company Name</label><br />
+          <label className={form.fontTitle}>Co. Name</label><br />
               <input
+              className={form.placeHolderBox}
                 type="text"
                 autoComplete="off"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, companyName: e.target.value })}
                 placeholder='Company Name'>
               </input><br />
 
-              <label>Company URL</label><br />
-              <input type="url"
+              <label className={form.fontTitle}>Does it have a website?</label><br />
+              <input 
+              className={form.placeHolderBox}
+              type="url"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, companyLink: e.target.value })}
                 name="description" placeholder="Website"></input><br />
 
@@ -77,17 +85,19 @@ export default function QuickAdd() {
             </fieldset>
 
 
-          </div>
+            </div>
           <div className="functionDATA" >
-            <fieldset>
+            <fieldset className={form.formFormat}>
               <legend>
 
 
-                <h3>Informações da Função</h3>
+                <h3 className={form.fontDisplay}>Job Function</h3>
               </legend>
 
-              <label>Job Function</label><br />
-              <input type="text" autoComplete="off"
+              {/* <label className={form.fontTitle}>Job Function</label><br /> */}
+              <input
+              className={form.placeHolderBox} 
+              type="text" autoComplete="off"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, jobFunction: e.target.value })}
                 placeholder='Working Position'></input>
 
@@ -95,12 +105,16 @@ export default function QuickAdd() {
 
 
 
-              <br /><label>Salary Range Between</label>
-              <input type="number"
+<br /><label className={form.fontTitle}>Salary Range Between</label>
+              <input
+              className={form.placeHolderBox}  
+              type="number"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, salaryRangeMin: e.target.value })}
                 name="salary" min="200" max="5000" step="25" />
               <label>-</label>
-              <input type="number"
+              <input
+              className={form.placeHolderBox} 
+              type="number"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, salaryRangeMax: e.target.value })}
                 name="salary" min="200" max="5000" step="25" />
               <select>
@@ -114,87 +128,69 @@ export default function QuickAdd() {
 
 
 
-              <label>Regime:</label>
-              <select>
+              <label className={form.fontTitle} id="Regime">Regime:</label>
+                <input
+                className={form.placeHolderBox}
+                list="regimes"
+                id="Regime"
+                name="regimes"
+                placeholder="Selecione..." />
+                
+                
+                <datalist  id="regimes">
 
 
-                <option>Presencial
-                  {/* <input type="radio" id="Presencial"
-                  //onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="presencial"
-                  checked ></input> */}
-                </option>
+              <option value="Presencial">
+               
+              </option>
 
 
-                <option >Remote
-                  {/* <input type="radio" id="remote"
-                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="remote"
-                ></input> */}
-                </option>
+              <option value="Remote">
+               
+              </option>
 
-                <option>Hybrid
-                  {/* <input type="radio" id="hybrid"
-                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                 name="regime" value="hybrid"
-                ></input> */}
-                </option>
+              <option value="Hybrid">
+                
+              </option>
 
-              </select>
+                </datalist>
 
-              <label>StateFunnel</label>
-
-              <select>
-
-
-                <option>Interest
-
-                </option>
+                <label className={form.fontTitle} id="Estado">State Funnel:</label>
+                <input
+                className={form.placeHolderBox}
+                list="state"
+                id="Estado"
+                name="state"
+                placeholder="Selecione..." />
+                
+                
+                <datalist  id="state">
 
 
-                <option >Application Sent
-
-                </option>
-
-                <option>Interview
-
-                </option>
-                <option>Awaiting Response
-
-                </option>
-                <option>Decision
-
-                </option>
-
-                <select>
+              <option value="Interest">
+               
+              </option>
 
 
-                  <option>Presencial
-                    {/* <input type="radio" id="Presencial"
-                  //onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="presencial"
-                  checked ></input> */}
-                  </option>
+              <option value="Application Sent">
+               
+              </option>
+
+              <option value="Interview">
+                
+              </option>
+
+              <option value="Awaiting Response">
+                
+              </option>
+
+              <option value="Decision">
+                
+              </option>
+
+                </datalist>
 
 
-                  <option >Remote
-                    {/* <input type="radio" id="remote"
-                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                  name="regime" value="remote"
-                ></input> */}
-                  </option>
-
-                  <option>Hybrid
-                    {/* <input type="radio" id="hybrid"
-                 // onChange={(e) => setCardData({ ...cardData, regime: e.target.value })}
-                 name="regime" value="hybrid"
-                ></input> */}
-                  </option>
-
-                </select>
-
-
-              </select>
 
 
 
@@ -202,9 +198,10 @@ export default function QuickAdd() {
           </div>
 
 
-          <br /><br /><input type="submit"></input>
-          <input type="reset"></input>
-
+          <span>
+          <br /><br /><input className={styles.button1} type="submit"></input>
+          <input className={styles.button1} type="reset"></input>
+        </span>
 
         </form>
       </span>
@@ -215,5 +212,6 @@ export default function QuickAdd() {
 
 
     </div>
+    
   )
 }

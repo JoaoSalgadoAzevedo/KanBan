@@ -1,7 +1,12 @@
 import Head from 'next/head'
+import QuickAdd from ".././components/cards/quickAdd"
+import { useState } from "react"
 
 
 export default  function Menu() {
+  const [addCard, setAddCard] = useState(false)
+
+//o menu terá que ter um state para aparecer e desaparecer
 
   return (
     <>
@@ -14,7 +19,10 @@ export default  function Menu() {
 
     <div className='menuBar'>
     <p>
-      
+    <button 
+      onClick={() => setAddCard(addCard ? false : true)}
+      className="botaoAdicionar">Add Card</button>
+      {addCard && <QuickAdd />}
         </p>
 
     </div>
