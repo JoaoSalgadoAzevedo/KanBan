@@ -8,7 +8,7 @@
 	border-radius: 10px;
 	justify-content: center;
 	box-sizing: border-box;
-	position: relative;
+	position: fixed;
 	width: 75%;
 	height: 75%;
 	left: 334px;
@@ -16,6 +16,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	z-index: 10;
+	/* border-color: #113055;
+	background-color: aliceblue; */
 }
 .containerCorrect{
 	display: flex;

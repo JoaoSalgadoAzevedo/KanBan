@@ -2,12 +2,14 @@ import { useState, useEffect } from "react"
 import CardThumbnail from "../cards/CardThumbnail"
 import QuickAdd from "../cards/quickAdd"
 import colunas from "../../../styles/colunas.module.css"
-export default function Coluna1() {
+export default function Coluna1(props) {
 
   const [cards_Col1, setCards_Col1] = useState([])
-  const [addCard, setAddCard] = useState(false)
+  
 
-
+  // useEffect(() => {
+  //   console.log(props)
+  // })
 
   useEffect(() => {
     async function CallBack() {
@@ -30,21 +32,35 @@ export default function Coluna1() {
     <div className='colunas'>
       <h2>Interest</h2>
       <button 
-      onClick={() => setAddCard(addCard ? false : true)}
+      onClick={() => props.setAddCard(true)}
       className="botaoAdicionar">Add Card</button>
-      {addCard && <QuickAdd />}
-  
+      {props.addCard && <div>
+        <QuickAdd 
+          {...props} />
+       
+      </div> }
+
      <h2>
        
        
        {
         
-        cards_Col1.map(e => < CardThumbnail 
+        cards_Col1.map(e => <CardThumbnail  
+          viewCard={props.viewCard}
+          {...props}
+        setViewCard={(eee) => {
+          console.log(eee, e._id)
+          props.setViewCard(eee)
+        }}
+          {...e}
           key={e._id} 
           CardId={e._id} 
           companyName={e.companyName} 
           jobFunction={e.jobFunction}
-          creationDate={e.creationDate} /> )
+          creationDate={e.creationDate}
+          
+        
+          /> )
   
   
       }

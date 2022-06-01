@@ -21,7 +21,7 @@ export default  function Menu() {
     <div className='menuBar'>
     <p>
     <button 
-      onClick={() => setAddCard(addCard ? false : true)}
+      onClick={() => setAddCard(true)}
       className="botaoAdicionar">Add Card</button>
       {addCard && <QuickAdd />}
         </p>

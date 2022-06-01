@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react"
 import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
-export default function OpenCard(cardId) {
-  const [Edit, setEdit] = useState(false)
+// import {useRouter} from "next/router"
+
+
+export default function OpenCard(props) {
+
+  // const [edit, setEdit] 
+  
+  // const router = useRouter()
+  // const [Edit, setEdit] = useState(false)
   const [cardData, setCardData] = useState({
     stateFunnel: "",
     creationDate: "",
@@ -33,9 +40,10 @@ export default function OpenCard(cardId) {
 // Colocámos cardId no ultimo parametro do useEffect e parou de chorar
 
   useEffect(() => {
+    console.log(props)
     async function callCard() {
       const res = await fetch(
-        `../../api/catchCard?id=${cardId}`, {
+        `../../api/catchCard?id=${props.CardId}`, {
           ////ISTO NAO ESTÁ A FUNCIONAR COM O CARD_ID, tentar perceber pq
         headers: {
             "Content-Type": "application/json",
@@ -43,13 +51,15 @@ export default function OpenCard(cardId) {
           },
         method: "POST"
       })
-      console.log(res)
-      const json = await res.json()
-      setCardData(json.a)
-      console.log("Fim do UseEffect")
+      console.log('resposta', res.status)
+      if (res.status === 200) {
+        const json = await res.json()
+        setCardData(json.a)
+        console.log("Fim do UseEffect")
+      }
     }
     callCard()
-  }, [cardId])
+  }, [props.CardId])
 
 // AINDA FALTA FAZER. Basta copiar o que já está feito para criar o cartão e alterar para update. 
 //Possivelmente temos que ver o "data" pq pode ser necessária uma função nova para o mongoDB
@@ -69,13 +79,20 @@ const editCard = async () => {
 
   return (
     //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: cardData.XXXXX
+    
+    
     <div>
       <span>
+      
+      
+
+
         <form
         className={form.formMaindiv} 
         onSubmit={(e) => {
           e.preventDefault()
           editCard()
+          // router.push("/plataforma")
           //AQUI LEVA A FUNCAO DE SUBMIT
         }}>
         
@@ -89,26 +106,26 @@ const editCard = async () => {
               <label className={form.fontTitle}>Co. Name</label><br />
               <input
               className={form.placeHolderBox}
-                type="text"
-                autoComplete="off"
-                onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
-                placeholder='Company Name'>
+              type="text"
+              autoComplete="off"
+              onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
+              placeholder='Company Name'>
               </input><br />
 
               <label className={form.fontTitle}>Does it have a website?</label><br />
               <input 
               className={form.placeHolderBox}
               type="url"
-                onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
-                name="description" placeholder={cardData.companyLink}></input><br />
+              onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
+              name="description" placeholder={cardData.companyLink}></input><br />
 
               <label className={form.fontTitle}>From where?</label><br />
               <input 
               className={form.placeHolderBox}
               type="text" 
               name=""
-                onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
-                placeholder='Address'></input><br />
+              onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
+              placeholder='Address'></input><br />
             </fieldset>
 
 
@@ -126,35 +143,35 @@ const editCard = async () => {
               className={form.placeHolderBox} 
               type="text" 
               autoComplete="off"
-                onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
-                placeholder='Working Position'></input>
+              onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
+              placeholder='Working Position'></input>
 
               <br /><label className={form.fontTitle}>Offer Source</label><br />
               <input
               className={form.placeHolderBox} 
               type="url"
-                onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
-                name="description" placeholder='Where did you find it?' />
+              onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
+              name="description" placeholder='Where did you find it?' />
 
               <br /><label className={form.fontTitle}>Offer Link</label><br />
               <input
               className={form.placeHolderBox} 
               type="url"
-                onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
-                name="description" placeholder='Keep here the link' />
+              onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
+              name="description" placeholder='Keep here the link' />
 
               <br /><label className={form.fontTitle}>Salary Range Between</label>
               <input
               className={form.placeHolderBox} 
               type="number"
-                onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
-                name="salary" min="200" max="5000"  step="25" />
+              onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
+              name="salary" min="200" max="5000"  step="25" />
               <label>-</label>
               <input
               className={form.placeHolderBox} 
               type="number"
-                onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
-                name="salary" min="200" max="5000" step="25" />
+              onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
+              name="salary" min="200" max="5000" step="25" />
                 <select className={form.placeHolderBox}>
                   
                   <option>Euro   €</option>
@@ -312,11 +329,18 @@ const editCard = async () => {
         <span>
           <br /><br /><input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
-        </span>
           
-
-
+          
+        </span>
         </form>
+
+
+        <button 
+        className={styles.buttonBack}
+        onClick={(e) => {
+            e.stopPropagation()
+            props.setViewCard(false)
+          }}>VOLTA PARA TRÁS</button>
       </span>
       <span>
 

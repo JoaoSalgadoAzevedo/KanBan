@@ -2,7 +2,12 @@ import { useState } from "react"
 // import styles from "../../../styles/colunas.module.css"
 import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
-export default function QuickAdd() {
+import {useRouter} from "next/router"
+
+
+export default function QuickAdd(props) {
+  // const router = useRouter()
+  
   const [QuickAdd, setQuickAdd] = useState({
     // Card_Id: "_id",
     // User_Id: "_Id",
@@ -29,7 +34,6 @@ export default function QuickAdd() {
     lastAppointment: "data"
   })
 
-
   const submit = async () => {
     console.log("olá")
     const res = await fetch(
@@ -43,6 +47,7 @@ export default function QuickAdd() {
     })
     console.log("Adeus")
     const json = await res.json()
+    //route para plataforma
     console.log(QuickAdd, res.status, json)
   }
 
@@ -202,6 +207,7 @@ export default function QuickAdd() {
           <span>
           <br /><br /><input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
+          <button onClick={() => props.setAddCard(false)}>CONSEGUI FODASSE</button>
         </span>
 
         </form>

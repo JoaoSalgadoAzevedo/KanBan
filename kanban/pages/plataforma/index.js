@@ -2,13 +2,17 @@ import Head from 'next/head'
 import Dashboard from '../components/dashboard'
 import Menu from './menu'
 import dashstyle from "../../styles/colunas.module.css"
-import QuickAdd from ".././components/cards/quickAdd"
+// import QuickAdd from ".././components/cards/quickAdd"
 import { useState } from "react"
 
 
 
 export default  function Plataforma() {
   const [addCard, setAddCard] = useState(false)
+  // const [open, setOpen] = useState(false)
+  
+  const [viewCard, setViewCard] = useState(false)
+  
 
   return (
     <>
@@ -35,7 +39,14 @@ export default  function Plataforma() {
     </aside>
 
     <content className='mainPage'>
-    <Dashboard />
+    <Dashboard
+    //  open={open}
+    //  setOpen={setOpen} 
+    addCard={addCard}
+    viewCard={viewCard}
+    setAddCard={setAddCard}
+    setViewCard={setViewCard} 
+     />
 
     </content>
 
