@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import Dashboard from '../components/dashboard'
 import Menu from './menu'
+import dashstyle from "../../styles/colunas.module.css"
+import QuickAdd from ".././components/cards/quickAdd"
+import { useState } from "react"
+
 
 
 export default  function Plataforma() {
+  const [addCard, setAddCard] = useState(false)
 
   return (
     <>
@@ -14,17 +19,18 @@ export default  function Plataforma() {
     <link rel="icon" href="/favicon.ico" />
   </Head>
 
-    <main>
+  <main className={dashstyle.maindiv}>
 
-    <header>
+  <header className={dashstyle.header}>
+    <a href='http://localhost:3000/'><img className={dashstyle.logoPossi}src="Logo-dashboard.svg"></img></a>
+      
 
-    Se existe ? logotipo E nome do usuario : apagar
-
-    </header>
+     </header>
 
     <aside className='menuBar'>
 
     <Menu />
+   
 
     </aside>
 
@@ -33,7 +39,6 @@ export default  function Plataforma() {
 
     </content>
 
-   
     </main>
 
     </>

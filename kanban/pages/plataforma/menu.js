@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import QuickAdd from ".././components/cards/quickAdd"
 import { useState } from "react"
+// import styles from "../../styles/Home.module.css"
 
 
 export default  function Menu() {

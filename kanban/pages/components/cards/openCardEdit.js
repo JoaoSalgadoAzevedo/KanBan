@@ -3,6 +3,8 @@ import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
 export default function OpenCardEdit() {
 
+  const [edit, setEdit] = useState(false)
+
   const [cardData, setCardData] = useState({
     stateFunnel: "",
     creationDate: "",
@@ -20,7 +22,6 @@ export default function OpenCardEdit() {
     emailRecruiter: "",
     telRecruiter: "",
     linkedinRecruiter: "",
-    companyLink: "",
     appointmentData: "",
     appointmentLocation: "",
     appoimentInformation: "",
@@ -80,7 +81,7 @@ export default function OpenCardEdit() {
                 type="text"
                 autoComplete="off"
                 onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
-                placeholder='Company Name'>
+                placeholder={cardData.companyName}>
               </input><br />
 
               <label className={form.fontTitle}>Does it have a website?</label><br />
@@ -88,15 +89,14 @@ export default function OpenCardEdit() {
               className={form.placeHolderBox}
               type="url"
                 onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
-                name="description" placeholder="Website"></input><br />
+                name="description" placeholder={cardData.companyLink}></input><br />
 
               <label className={form.fontTitle}>From where?</label><br />
               <input 
               className={form.placeHolderBox}
               type="text" 
-              name=""
-                onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
-                placeholder='Address'></input><br />
+              onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
+              placeholder={cardData.companyLocation}></input><br />
             </fieldset>
 
 
@@ -115,21 +115,21 @@ export default function OpenCardEdit() {
               type="text" 
               autoComplete="off"
                 onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
-                placeholder='Working Position'></input>
+                placeholder={cardData.jobFunction}></input>
 
               <br /><label className={form.fontTitle}>Offer Source</label><br />
               <input
               className={form.placeHolderBox} 
               type="url"
                 onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
-                name="description" placeholder='Where did you find it?' />
+                name="description" placeholder={cardData.offerSource} />
 
               <br /><label className={form.fontTitle}>Offer Link</label><br />
               <input
               className={form.placeHolderBox} 
               type="url"
                 onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
-                name="description" placeholder='Keep here the link' />
+                name="description" placeholder={cardData.offerLink} />
 
               <br /><label className={form.fontTitle}>Salary Range Between</label>
               <input
@@ -146,7 +146,7 @@ export default function OpenCardEdit() {
                 <select className={form.placeHolderBox}>
                   
                   <option>Euro   €</option>
-                  <option>Dolar    $</option>
+                  <option>Dolar  $</option>
                   <option>Cenas ai</option>
 
                   </select><br />
@@ -160,7 +160,7 @@ export default function OpenCardEdit() {
                 list="regimes"
                 id="Regime"
                 name="regimes"
-                placeholder="Selecione..." />
+                placeholder={cardData.regime} />
                 
                 
                 <datalist  id="regimes">
@@ -186,7 +186,7 @@ export default function OpenCardEdit() {
                 list="state"
                 id="Estado"
                 name="state"
-                placeholder="Selecione..." />
+                placeholder={cardData.stateFunnel} />
                 
                 
                 <datalist  id="state">
@@ -222,7 +222,11 @@ export default function OpenCardEdit() {
           </div>
         <div>
           <label className={form.fontDisplay}>Observations</label><br />
-          <textarea className={form.placeholder2} onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></textarea><br />
+          <textarea 
+          className={form.placeholder2} 
+          onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} 
+          type="text"
+          placeholder={cardData.observations}></textarea><br />
         </div>
         </div>
 
@@ -234,28 +238,29 @@ export default function OpenCardEdit() {
                   <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
 
                   <label className={form.fontTitle}>Name</label><br />
-                  <input className={form.placeHolderBox} type="text" autoComplete="off"
+                  <input 
+                  className={form.placeHolderBox} 
+                  type="text" autoComplete="off"
                     onChange={(e) => setCardData({ ...cardData, nomeRecruiter: e.target.value })}
-                    placeholder='Person Name'></input><br />
+                    placeholder={cardData.nomeRecruiter}></input><br />
 
                   <label className={form.fontTitle}>Email</label><br />
                   <input type="email"
                     className={form.placeHolderBox}
                     onChange={(e) => setCardData({ ...cardData, emailRecruiter: e.target.value })}
-                    name="description" placeholder='Do you have an email?' />
+                    placeholder={cardData.emailRecruiter} />
 
                   <br /><label className={form.fontTitle}>Contact</label><br />
                   <input type="number"
                     className={form.placeHolderBox}
                     onChange={(e) => setCardData({ ...cardData, telRecruiter: e.target.value })}
-                    name="and contact?" />
+                    placeholder={cardData.telRecruiter} />
 
                   <br /><label className={form.fontTitle}>Linkedin</label><br />
                   <input type="url"
                     className={form.placeHolderBox}
-                    name="description"
                     onChange={(e) => setCardData({ ...cardData, linkedinRecruiter: e.target.value })}
-                    placeholder="Linkedin?" autoComplete="off" /><br />
+                    placeholder={cardData.linkedinRecruiter} autoComplete="off" /><br />
                 </fieldset>
 
               </div>
@@ -268,7 +273,7 @@ export default function OpenCardEdit() {
                   className={form.placeHolderBox} 
                   autoComplete="off"
                   onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
-                  placeholder='Address'></input><br />
+                  placeholder={cardData.appointmentLocation}></input><br />
 
                 <label className={form.fontTitle}>Next Interview</label>
                 <input type="datetime-local"
@@ -292,24 +297,27 @@ export default function OpenCardEdit() {
                   className={form.placeholder2}
                   name="description"
                   onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
-                  placeholder="Observations" autoComplete="off" /><br /> 
+                  placeholder={cardData.appoimentInformation} autoComplete="off" /><br /> 
               </div>
               
           </div>
-
+{/* Aqui no botao de submit é que ele vai fazer o route de volta para a plataforma */}
         <span>
           <br /><br /><input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
+          <button className={styles.button1}>Go back</button>
+          
         </span>
           
 
-
+<p>bom dia</p>
         </form>
+        
       </span>
       <span>
 
       </span>
- {/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
+
 
     </div>
   )

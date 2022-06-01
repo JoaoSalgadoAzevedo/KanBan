@@ -205,11 +205,7 @@ export default function QuickAdd() {
 
         </form>
       </span>
-      <span>
-
-        AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO
-      </span>
-
+  
 
     </div>
     

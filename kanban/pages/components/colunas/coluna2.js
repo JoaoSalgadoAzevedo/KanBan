@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import CardThumbnail from "../cards/CardThumbnail"
+import colunas from "../../../styles/colunas.module.css"
 export default function Coluna2() {
 
   const [cards_Col2, setCards_Col2] = useState([])
@@ -27,8 +28,8 @@ return (
 
 
   <div className='colunas'>
-    <h2>Application Sent</h2>
-    <button className="botaoAdicionar">BOTAO</button>
+    <h2 className={colunas.textocoluna}>Application Sent</h2>
+    
 
     {
       

@@ -200,3 +200,9 @@
   line-height: 58px;
   color: #FFFFFF;
 }
+
+.menu{
+  display: flexbox;
+  height: auto;
+  width: auto;
+}

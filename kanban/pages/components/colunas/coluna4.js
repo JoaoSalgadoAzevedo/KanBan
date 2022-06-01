@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import CardThumbnail from "../cards/CardThumbnail"
+import colunas from "../../../styles/colunas.module.css"
 export default function Coluna4() {
 
   const [cards_Col4, setCards_Col4] = useState([])
@@ -27,7 +28,7 @@ return (
 
 
   <div className='colunas'>
-    <h2>Awaiting Response</h2>
+    <h2 className={colunas.textocoluna}>Awaiting Response</h2>
    
 
     {

@@ -1,20 +1,71 @@
-.colunas1{
-    background-color:azure;
-    display: inline-flex;   
-    width: 19vw;
-    border: 1px solid black;
-    justify-content: space-around;
-    
-   
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;300;500&display=swap');
+
+.maindiv {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	background: linear-gradient(180deg, rgba(0, 178, 202, 0.3) 0%, rgba(39, 130, 142, 0) 100%);
+	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+
 }
 
-.paginaDash{
-    background-color: aquamarine;
-    display: inline-flex;
-    flex-direction: row;
-    
+.header {
+	display: flex;
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	bottom: 91.94%;
+	background: #FBFFFF;
+	align-items: center;
 }
 
-.popup {
-    position: absolute;
+.logoPossi {
+	position: relative;
+	left: 40%;
+}
+
+.containerColunas {
+	position: relative;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	width: 70%;
+	height: 55%;
+	background: #FBFFFF;
+	box-shadow: -5px 16px 0px -9px rgb(0 0 0 / 25%);
+	border-radius: 16px;
+	left: 19px;
+	top: 18px;
+}
+
+.colunaDiv {
+	display: inline-flex;
+	flex-direction: row;
+	width: 19vw;
+
+	justify-content: space-around;
+}
+
+.bottomdiv {
+	position: absolute;
+	top: 10%;
+	display: flex;
+	flex-direction: row;
+}
+
+.textocoluna {
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: 1500;
+	font-size: 25px;
+	line-height: 30px;
+	background: linear-gradient(180deg, #00B2CA 0%, #113055 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	top: -10px;
+	position: relative;
 }

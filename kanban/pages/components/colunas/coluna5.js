@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import CardThumbnail from "../cards/CardThumbnail"
+import colunas from "../../../styles/colunas.module.css"
+
 export default function Coluna5() {
 
   const [cards_Col5, setCards_Col5] = useState([])
@@ -27,7 +29,7 @@ return (
 
 
   <div className='colunas'>
-    <h2>Decision</h2>
+    <h2 className={colunas.textocoluna}>Decision</h2>
     
 
     {
