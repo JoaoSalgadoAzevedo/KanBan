@@ -1,8 +1,5 @@
-// import { insertNota } from "../data/notas";
+import { getOneCard } from "../data/db";
 
-// export async function saveNota(nota) {
-//     // verificações e outras lógica
-//     return await insertNota(nota)
-// }
-
-
+export async function getCard(id){
+    return await getOneCard(id)
+}

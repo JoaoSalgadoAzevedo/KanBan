@@ -8,10 +8,10 @@ export default function Coluna4() {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        `../../api/columns/column?stateFunnel=Awaiting Response&auth=${localStorage.getItem("tokenG3")}`, {
+        `../../api/cards/column?stateFunnel=Awaiting Response&auth=${localStorage.getItem("tokenG3")}`, {
           headers: {
           "Content-Type": "application/json",
-          "Authenticate": localStorage.getItem("token")
+          "Authenticate": localStorage.getItem("tokenG3")
         },
         method: "GET"
       })
@@ -28,8 +28,7 @@ return (
 
 
   <div className='colunas'>
-    <h2 className={colunas.textocoluna}>Awaiting Response</h2>
-   
+<h2 className={colunas.textocoluna}>Awaiting Response</h2>
 
     {
       
@@ -49,4 +48,3 @@ return (
   </div>
 )
 }
-

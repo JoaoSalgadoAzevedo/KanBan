@@ -56,3 +56,8 @@ export  async function createCardOnMONGO(data, user) {
     const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
     return await collection.insertOne({...data, userId: user._id})
 }
+
+export  async function editCardOnMONGO(data, user) {
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
+    return await collection.update(collection, {...data})
+}

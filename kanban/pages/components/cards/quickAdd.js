@@ -158,6 +158,7 @@ export default function QuickAdd() {
                 <label className={form.fontTitle} id="Estado">State Funnel:</label>
                 <input
                 className={form.placeHolderBox}
+                onChange={(e) => setQuickAdd({...QuickAdd, stateFunnel: e.target.value})}
                 list="state"
                 id="Estado"
                 name="state"

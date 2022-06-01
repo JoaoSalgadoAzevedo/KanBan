@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import CardThumbnail from "../cards/CardThumbnail"
 import colunas from "../../../styles/colunas.module.css"
-
 export default function Coluna5() {
 
   const [cards_Col5, setCards_Col5] = useState([])
@@ -9,10 +8,10 @@ export default function Coluna5() {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        `../../api/columns/column?stateFunnel=Decision&auth=${localStorage.getItem("tokenG3")}`, {
+        `../../api/cards/column?stateFunnel=Decision&auth=${localStorage.getItem("tokenG3")}`, {
           headers: {
           "Content-Type": "application/json",
-          "Authenticate": localStorage.getItem("token")
+          "Authenticate": localStorage.getItem("tokenG3")
         },
         method: "GET"
       })
@@ -29,8 +28,8 @@ return (
 
 
   <div className='colunas'>
+
     <h2 className={colunas.textocoluna}>Decision</h2>
-    
 
     {
       

@@ -1,18 +1,15 @@
-// import { getMongoCollection } from "./db";
+import { getMongoCollection } from "./db"
+import { MongoClient, ObjectId } from "mongodb" 
+const DB_NAME = "db_opplog"
 
-// export async function insertNota(nota) {
-//     const collection = await getMongoCollection('next-example', 'notas')
-//     const result = await collection.insertOne(nota)
-//     return result.insertedId
-// }
+const COLLECTION_CARDS = "db_cards"
 
-// // Filtros
-// export async function findNotasByStatus(status, page) {
-//     const collection = await getMongoCollection('next-example', 'notas')
-//     return await collection.find({
-//         status
-//     })
-//         // .skip(page * 10) // page começa a 0
-//         // .limit(10)
-//         .toArray()
-// }
+
+export async function getOneCard(id) {
+    console.log({_id:ObjectId(id.id)})
+    const collection = await getMongoCollection(DB_NAME, COLLECTION_CARDS)
+    if(ObjectId.isValid(id)){
+        return await collection.findOne({_id:ObjectId(id)})
+    }
+    return false
+}

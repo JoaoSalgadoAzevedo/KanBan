@@ -1,10 +1,10 @@
-import {getCards} from "../../../services/columns/column"
-
-export default async function column1 (req, res) { 
-    if (req.method === "GET") {
-
-        let a = await getCards(req.query.stateFunnel , req.query.auth);
-        return res.status(200).json({a})
+import {getCard} from "/../../services/columns/column"
+export default async function catchCard (req, res){
+    if(req.method === "POST"){
+        console.log(req.query.id)
+        const id = req.query.id
+         let a = await getCard(id)
+     
+        a ? res.status(200).json(a) : res.status(300).json({message:"Cartão não encontrado"})
     }
 }
-   

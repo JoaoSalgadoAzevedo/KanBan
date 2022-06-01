@@ -8,10 +8,10 @@ export default function Coluna3() {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        `../../api/columns/column?stateFunnel=Interview&auth=${localStorage.getItem("tokenG3")}`, {
+        `../../api/cards/column?stateFunnel=Interview&auth=${localStorage.getItem("tokenG3")}`, {
           headers: {
           "Content-Type": "application/json",
-          "Authenticate": localStorage.getItem("token")
+          "Authenticate": localStorage.getItem("tokenG3")
         },
         method: "GET"
       })
@@ -23,12 +23,13 @@ export default function Coluna3() {
     CallBack()
   }, [])
 
-
-return (
-
-
-  <div className='colunas'>
-    <h2 className={colunas.textocoluna}>Interview</h2>
+  
+  return (
+    
+    
+    <div className='colunas'>
+    <h2 className={colunas.textocoluna}>Interview</h2> 
+  
     
 
     {
@@ -49,4 +50,3 @@ return (
   </div>
 )
 }
-
