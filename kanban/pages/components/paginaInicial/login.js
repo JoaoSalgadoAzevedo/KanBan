@@ -47,7 +47,7 @@ export default function Login() {
       <main className={styles.containerE1}>
         <aside className={styles.containerD1}>
           <img src="/picgroup.svg"></img>
-          <img src="/logo.svg"></img>
+          <img src="/Logo2.svg"></img>
         </aside>
 
         <form

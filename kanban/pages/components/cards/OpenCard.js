@@ -99,7 +99,10 @@ export default function OpenCard(props) {
             //AQUI LEVA A FUNCAO DE SUBMIT
           }}>
 
-          <div >
+          <div style={{display: 'flex',
+                      flexDirection: 'row',
+                      flexWrap: 'wrap'
+                  }}>
             <div >
               <div className="companyINFO" >
 
@@ -193,7 +196,9 @@ export default function OpenCard(props) {
 
 
 
-          <div className={form.bottomcontainer}>
+          <div style={{display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'baseline'}}>
             <div className="recruiterINFO" >
               <fieldset className={form.formFormat}>
                 <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>

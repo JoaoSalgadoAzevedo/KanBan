@@ -3,7 +3,7 @@
 
 
 .formMaindiv {
-	background: rgba(234, 251, 251);
+    background: rgba(234, 251, 251);
     box-shadow: -6px 4px 0px 3px rgb(0 0 0 / 15%);
     border-radius: 10px;
     justify-content: space-evenly;
@@ -19,35 +19,40 @@
     flex-wrap: wrap;
     flex-direction: row-reverse;
     align-content: space-around;
-	/* border-color: #113055;
+    /* border-color: #113055;
 	background-color: aliceblue; */
 }
 
 .formMaindiv2 {
-    background: rgb(234, 251, 251);
-    box-shadow: -6px 4px 0px 3px rgb(0 0 0 / 15%);
+    background: rgba(255, 248, 248, 0.972);
+    box-shadow: -6px 4px 0px 3px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     box-sizing: border-box;
     position: fixed;
-    width: 75%;
-    height: 75%;
-    left: 334px;
-    top: 121px;
+    width: 1251px;
+    height: 838px;
     display: flex;
-    align-items: center;
-    z-index: 10;
+    align-items: baseline;
+    z-index: 41;
     flex-wrap: wrap;
-    flex-direction: column;
-    align-content: stretch;
-    justify-content: space-between;
-	/* border-color: #113055;
-	background-color: aliceblue; */
+    flex-direction: row;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
 }
 
-
+.formMainDiv2Modal {
+    background: rgba(43, 99, 137, 0.44);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
 
 .fontDisplay {
-	font-family: 'Fira Sans Condensed';
+    font-family: 'Fira Sans Condensed';
     font-style: normal;
     font-size: 18px;
     background: linear-gradient(180deg, #113055 0%, #000000 100%);
@@ -56,18 +61,18 @@
 }
 
 .formFormat {
-	border: none;
+    border: none;
     margin-top: 12px;
     width: 30vw;
 }
 
 .fontTitle {
-	font-family: 'Fira Sans Condensed';
+    font-family: 'Fira Sans Condensed';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-    
+
     color: #113055;
 }
 
@@ -81,36 +86,60 @@
 } */
 
 .placeHolderBox {
-	background: rgba(221, 245, 248, 0.5);
-	border: 1px solid rgba(0, 178, 202, 0.15);
-	border-radius: 7px;
-	font-family: 'Amiko';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 15px;
-	line-height: 20px;
-	color: #00B2CA;
+    background: rgba(221, 245, 248, 0.5);
+    border: 1px solid rgba(0, 178, 202, 0.15);
+    border-radius: 7px;
+    font-family: 'Amiko';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #00B2CA;
 }
 
 .placeHolderBox:hover {
-	background: rgba(17, 48, 85, 0.75);
-	border-radius: 6px;
-	color: #00E1FF;
+    background: rgba(17, 48, 85, 0.75);
+    border-radius: 6px;
+    color: #00E1FF;
 }
 
-.placeholder2{
-	background: rgba(221, 245, 248, 0.5);
-	border: 2px solid rgb(31, 78, 83);
-	border-radius: 7px;
-	font-family: 'Amiko';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 15px;
-	line-height: 20px;
-	color: #00B2CA;
-	display: flex;
+.placeholder2 {
+    background: rgba(221, 245, 248, 0.5);
+    border: 2px solid rgb(31, 78, 83);
+    border-radius: 7px;
+    font-family: 'Amiko';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #00B2CA;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
-	height: 80px;
+    height: 80px;
     justify-content: space-evenly;
+}
+
+.containerTop {
+    border: none;
+    width: 350px;
+    height: 318px;
+    margin: 40px;
+}
+
+.containerGroup1Top {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.containerMiddle {
+    display: flex;
+}
+.backscreen{
+    width: 100%;
+    height: 100%;
+    background: rgba(43, 99, 137, 0.44);
+    backdrop-filter: blur(10px);
 }

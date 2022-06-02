@@ -60,7 +60,7 @@ export default function Signup() {
       <main className={styles.containerE1}>
         <aside className={styles.containerD1}>
           <img src="/picgroup.svg"></img>
-          <img className={styles.imgLogo}src="/logo.svg"></img>
+          <img className={styles.imgLogo}src="/Logo2.svg"></img>
         </aside>
 
         <form
