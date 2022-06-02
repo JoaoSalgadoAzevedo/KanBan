@@ -5,7 +5,7 @@ import colunas from "../../../styles/colunas.module.css"
 export default function Coluna1(props) {
 
   const [cards_Col1, setCards_Col1] = useState([])
-  
+
 
   // useEffect(() => {
   //   console.log(props)
@@ -15,7 +15,7 @@ export default function Coluna1(props) {
     async function CallBack() {
       const res = await fetch(
         `../../api/cards/column?stateFunnel=Interest&auth=${localStorage.getItem("tokenG3")}`, {
-          method: "GET"
+        method: "GET"
       })
       console.log(res)
       const json = await res.json()
@@ -31,46 +31,47 @@ export default function Coluna1(props) {
 
     <div className='colunas'>
       <h2 className={colunas.textocoluna}>Interest</h2>
-      <button 
-      onClick={() => props.setAddCard(true)}
-      className="botaoAdicionar">Add Card</button>
-      {props.addCard && <div>
-        <QuickAdd 
-          {...props} />
-       
-      </div> }
 
-     <h2>
-       
-       
-       {
-        
-        cards_Col1.map(e => <CardThumbnail  
-          viewCard={props.viewCard}
-          {...props}
-        setViewCard={(eee) => {
-          console.log(eee, e._id)
-          props.setViewCard(eee)
-        }}
-          {...e}
-          key={e._id} 
-          CardId={e._id} 
-          companyName={e.companyName} 
-          jobFunction={e.jobFunction}
-          creationDate={e.creationDate}
-          
-        
-          /> )
-  
-  
-      }
-       
-       </h2> 
-       
-  
-  {/* CardId, companyName, jobFunction, creationDate */}
+      <button
+      className={colunas.botaoAdd}        onClick={() => props.setAddCard(true)}
+        >Add Card</button>
+      {props.addCard && <div>
+        <QuickAdd
+          {...props} />
+
+      </div>}
+
+      <h2>
+
+
+        {
+
+          cards_Col1.map(e => <CardThumbnail
+            viewCard={props.viewCard}
+            {...props}
+            setViewCard={(eee) => {
+              console.log(eee, e._id)
+              props.setViewCard(eee)
+            }}
+            {...e}
+            key={e._id}
+            CardId={e._id}
+            companyName={e.companyName}
+            jobFunction={e.jobFunction}
+            creationDate={e.creationDate}
+
+
+          />)
+
+
+        }
+
+      </h2>
+
+
+      {/* CardId, companyName, jobFunction, creationDate */}
       {/* <span>{cards_Col1}</span> */}
-  
+
     </div>
   )
 }

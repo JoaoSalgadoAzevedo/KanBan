@@ -5,6 +5,7 @@ import styles from "../../../styles/signup.module.css"
 
 
 
+
 export default function Signup() {
   const router = useRouter()
   const routerLogin = useRouter()
@@ -32,9 +33,13 @@ export default function Signup() {
 
    if(res.status === 200) {
       routerLogin.push("/components/paginaInicial/login")
-      
-   }
-    console.log(signupData, res.status, json)
+      } else {
+        alert(`${json.message}.  ${json.errors.password}`)
+      }
+    
+    
+    
+      console.log(signupData, res.status, json)
    
     
   }
@@ -110,6 +115,7 @@ export default function Signup() {
               name=""></input>
           </label>
 
+            
           <button className={styles.button1}
             value="Sign Up"
             >Submit

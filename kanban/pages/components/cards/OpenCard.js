@@ -32,22 +32,22 @@ export default function OpenCard(props) {
     lastAppointment: ""
   });
 
- 
-// Não estamos a conseguir colocar a prop cardId sem ele chorar. 
-// Para fazer fetch temos que conseguir fazer chegar cardId ao API.
 
-// Colocámos cardId no ultimo parametro do useEffect e parou de chorar
+  // Não estamos a conseguir colocar a prop cardId sem ele chorar. 
+  // Para fazer fetch temos que conseguir fazer chegar cardId ao API.
+
+  // Colocámos cardId no ultimo parametro do useEffect e parou de chorar
 
   useEffect(() => {
     console.log(props)
     async function callCard() {
       const res = await fetch(
         `../../api/catchCard?id=${props.CardId}`, {
-          ////ISTO NAO ESTÁ A FUNCIONAR COM O CARD_ID, tentar perceber pq
+        ////ISTO NAO ESTÁ A FUNCIONAR COM O CARD_ID, tentar perceber pq
         headers: {
-            "Content-Type": "application/json",
-            "Authenticate": localStorage.getItem("tokenG3")
-          },
+          "Content-Type": "application/json",
+          "Authenticate": localStorage.getItem("tokenG3")
+        },
         method: "POST"
       })
       console.log('resposta', res.status)
@@ -60,10 +60,10 @@ export default function OpenCard(props) {
     callCard()
   }, [props.CardId])
 
-// AINDA FALTA FAZER. Basta copiar o que já está feito para criar o cartão e alterar para update. 
-//Possivelmente temos que ver o "data" pq pode ser necessária uma função nova para o mongoDB
-  
-const editCard = async () => {
+  // AINDA FALTA FAZER. Basta copiar o que já está feito para criar o cartão e alterar para update. 
+  //Possivelmente temos que ver o "data" pq pode ser necessária uma função nova para o mongoDB
+
+  const editCard = async () => {
     const res = await fetch(
       '../../api/editCard', {
       body: JSON.stringify(cardData),
@@ -72,416 +72,373 @@ const editCard = async () => {
       },
       method: "PATCH"
     })
-    const json = await res.json() 
+    const json = await res.json()
     console.log(cardData, res.status, json)
   }
-if(!openAndEdit){
+  if (!openAndEdit) {
 
-  
+    return (
 
-
-  return (
-    //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: cardData.XXXXX
-    
-
-  <div>
-  <span>
-    <form
-    className={form.formMaindiv2} 
-    onSubmit={(e) => {
-      e.preventDefault()
-      editCard()
-      //AQUI LEVA A FUNCAO DE SUBMIT
-    }}>
-    
-      <div className={form.topcontainer}>
-      <div className={form.companiDiv}>
-      <div className="companyINFO" >
-
-        <fieldset className={form.formFormat}>
-          <h3 className={form.fontDisplay}>Company INFO</h3>
-
-          <label className={form.fontTitle}>Co. Name</label><br />
-          <p>{cardData.companyName}</p>
-          
-        
-
-          <label className={form.fontTitle}>Does it have a website?</label><br />
-          <p>{cardData.companyLink}</p>
-          
-
-          <label className={form.fontTitle}>From where?</label><br />
-          <p>{cardData.companyLocation}</p>
-          
-        </fieldset>
-
-
-      </div>
-      <div className="functionDATA" >
-        <fieldset className={form.formFormat}>
-          <legend>
-
-
-            <h3 className={form.fontDisplay}>Job Function</h3>
-          </legend>
-
-          <label className={form.fontTitle}>Job Function</label>
-          <p>{cardData.jobFunction}</p>
-          
-
-          <br /><label className={form.fontTitle}>Offer Source</label>
-          <p>{cardData.offerSource}</p>
-          
-
-          <br /><label className={form.fontTitle}>Offer Link</label>
-          <p>{cardData.offerLink}</p>
-          
-
-          <label className={form.fontTitle}>Salary Range Between</label>
-          <p>{cardData.salaryRangeMax}{cardData.salaryRangeMin}</p>
-
-          
-            <select className={form.placeHolderBox}>
-              
-              <option>Euro   €</option>
-              <option>Dolar  $</option>
-              <option>Cenas ai</option>
-
-              </select>
-
-
-
-
-            <label className={form.fontTitle} id="Regime">Regime:</label>
-            <p>{cardData.regime}</p>
-            
-            
-            <datalist  id="regimes">
-
-
-          <option value="Presencial">
-           
-          </option>
-
-
-          <option value="Remote">
-           
-          </option>
-
-          <option value="Hybrid">
-            
-          </option>
-
-            </datalist>
-            <label className={form.fontTitle} id="Estado">State Funnel:</label>
-            <p>{cardData.stateFunnel}</p>
-            
-            
-            
-            <datalist  id="state">
-
-
-          <option value="Interest">
-           
-          </option>
-
-
-          <option value="Application Sent">
-           
-          </option>
-
-          <option value="Interview">
-            
-          </option>
-
-          <option value="Awaiting Response">
-            
-          </option>
-
-          <option value="Decision">
-            
-          </option>
-
-            </datalist>
-
-
-        </fieldset>
-      </div>
-
-      </div>
-    <div><br/>
-      <label className={form.fontDisplay}>Observations</label><br />
-      <textarea 
-      className={form.placeholder2} 
-      onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} 
-      type="text"
-      placeholder={cardData.observations}></textarea><br />
-    </div>
-    </div>
-
-
-
-    <div className={form.bottomcontainer}>
-          <div className="recruiterINFO" >
-            <fieldset className={form.formFormat}>
-              <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
-
-              <label className={form.fontTitle}>Name</label>
-              <p>{cardData.nomeRecruiter}</p>
-            
-
-              <label className={form.fontTitle}>Email</label>
-              <p>{cardData.emailRecruiter}</p>
-              
-
-              <label className={form.fontTitle}>Contact</label>
-              <p>{cardData.telRecruiter}</p>
-              
-
-              <label className={form.fontTitle}>Linkedin</label>
-              <p>{cardData.linkedinRecruiter}</p>
-              
-            </fieldset>
-
-          </div>
-          <div className={form.containerCorrect.interviewINFO}>
-
-            <h3 className={form.fontDisplay}>Interview</h3>
-
-            <label className={form.fontTitle}>Location</label>
-            <p>{cardData.appointmentLocation}</p>
-            
-
-            <label className={form.fontTitle}>Next Interview</label>
-            <p>{cardData.appointmentData}</p>
-            
-
-            <label className={form.fontTitle}>Last Interview</label>
-            <p>{cardData.lastAppointment}</p>
-           
-
-
-          </div>
-          <div>
-           <label className={form.fontDisplay}>Additional Info</label><br />
-            <p>{cardData.appoimentInformation}</p>
-          </div>
-          
-      </div>
-{/* Aqui no botao de submit Ã© que ele vai fazer o route de volta para a plataforma */}
-    <span className={styles.spanBotoes}>
-      {/* <input className={styles.button1} type="submit"></input>
-      <input className={styles.button1} type="reset"></input> */}
-    
-
-
-
-      <button 
-className={styles.button1}
-onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
-        
-        
-     <button 
-     className={styles.button1}
-     onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button> 
-      
-    </span>
-    
-    </form>
-    
-  </span>
-  <span>
-
-  </span>
-
-
-</div>
-)
-    
-  } else{
-    <>
-    
-   
-    <div>
-      
-      <span>
-      
-      
-
-
+      <div>
         <form
-        action="/plataforma"
-        className={form.formMaindiv} 
-        onSubmit={(e) => {
-          e.preventDefault()
-          editCard()
+          className={form.formMaindiv2}
+          onSubmit={(e) => {
+            e.preventDefault()
+            editCard()
+            //AQUI LEVA A FUNCAO DE SUBMIT
+          }}>
+
+          <div >
+            <div >
+              <div className="companyINFO" >
+
+                <fieldset className={form.formFormat}>
+                  <h3 className={form.fontDisplay}>Company INFO</h3>
+
+                  <label className={form.fontTitle}>Co. Name</label><br />
+                  <p>{cardData.companyName}</p>
+                  <label className={form.fontTitle}>Does it have a website?</label><br />
+                  <p>{cardData.companyLink}</p>
+
+
+                  <label className={form.fontTitle}>From where?</label><br />
+                  <p>{cardData.companyLocation}</p>
+
+                </fieldset>
+
+              </div>
+              <div className="functionDATA" >
+                <fieldset >
+                  <legend>
+                    <h3 className={form.fontDisplay}>Job Function</h3>
+                  </legend>
+
+                  <label className={form.fontTitle}>Job Function</label>
+                  <span>{cardData.jobFunction}</span>
+
+
+                  <br /><label className={form.fontTitle}>Offer Source</label>
+                  <span>{cardData.offerSource}</span>
+
+
+                  <br /><label className={form.fontTitle}>Offer Link</label>
+                  <span>{cardData.offerLink}</span>
+
+
+                  <label className={form.fontTitle}>Salary Range Between</label>
+                  <p>{cardData.salaryRangeMax}{cardData.salaryRangeMin}</p>
+
+
+                  <select className={form.placeHolderBox}>
+
+                    <option>Euro   €</option>
+                    <option>Dolar  $</option>
+                    <option>Cenas ai</option>
+
+                  </select>
+
+                  <label className={form.fontTitle} id="Regime">Regime:</label>
+                  <p>{cardData.regime}</p>
+
+
+                  <datalist id="regimes">
+                    <option value="Presencial">
+                    </option>
+                    <option value="Remote">
+                    </option>
+                    <option value="Hybrid">
+                    </option>
+
+                  </datalist>
+                  <label className={form.fontTitle} id="Estado">State Funnel:</label>
+                  <p>{cardData.stateFunnel}</p>
+
+                  <datalist id="state">
+                    <option value="Interest">
+                    </option>
+                    <option value="Application Sent">
+                    </option>
+                    <option value="Interview">
+                    </option>
+                    <option value="Awaiting Response">
+                    </option>
+                    <option value="Decision">
+                    </option>
+                  </datalist>
+                </fieldset>
+              </div>
+
+            </div>
+            <div><br />
+              <label className={form.fontDisplay}>Observations</label><br />
+              <textarea
+                
+                className={form.placeholder2}
+                onChange={(e) => setCardData({ ...cardData, observations: e.target.value })}
+                type="text"
+                placeholder={cardData.observations}></textarea><br />
+            </div>
+          </div>
+
+
+
+          <div className={form.bottomcontainer}>
+            <div className="recruiterINFO" >
+              <fieldset className={form.formFormat}>
+                <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
+
+                <label className={form.fontTitle}>Name</label>
+                <p>{cardData.nomeRecruiter}</p>
+
+
+                <label className={form.fontTitle}>Email</label>
+                <p>{cardData.emailRecruiter}</p>
+
+
+                <label className={form.fontTitle}>Contact</label>
+                <p>{cardData.telRecruiter}</p>
+
+
+                <label className={form.fontTitle}>Linkedin</label>
+                <p>{cardData.linkedinRecruiter}</p>
+
+              </fieldset>
+
+            </div>
+            <div>
+
+              <h3 className={form.fontDisplay}>Interview</h3>
+
+              <label className={form.fontTitle}>Location</label>
+              <p>{cardData.appointmentLocation}</p>
+
+
+              <label className={form.fontTitle}>Next Interview</label>
+              <p>{cardData.appointmentData}</p>
+
+
+              <label className={form.fontTitle}>Last Interview</label>
+              <p>{cardData.lastAppointment}</p>
+
+
+
+            </div>
+            <div>
+              <label className={form.fontDisplay}>Additional Info</label><br />
+              <p>{cardData.appoimentInformation}</p>
+            </div>
+
+          </div>
+          {/* Aqui no botao de submit Ã© que ele vai fazer o route de volta para a plataforma */}
+          <div className={styles.spanBotoes}>
+            {/* <input className={styles.button1} type="submit"></input>
+      <input className={styles.button1} type="reset"></input> */}
+
+
+
+
+            <button
+              className={styles.button1}
+              onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+
+
+            <button
+              className={styles.button1}
+              onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+
+          </div>
+
+        </form>
+
+
+
+      </div>
+    )
+
+  } else {
+    <>
+
+
+      <div>
+
+        <span>
+
+
+
+
+          <form
+            action="/plataforma"
+            className={form.formMaindiv}
+            onSubmit={(e) => {
+              e.preventDefault()
+              editCard()
             }}>
-        
-          <div className={form.topcontainer}>
-          <div className={form.companiDiv}>
-          <div className="companyINFO" >
 
-            <fieldset className={form.formFormat}>
-              <h3 className={form.fontDisplay}>Company INFO</h3>
+            <div className={form.topcontainer}>
+              <div className={form.companiDiv}>
+                <div className="companyINFO" >
 
-              <label className={form.fontTitle}>Co. Name</label><br />
-              <input
-              className={form.placeHolderBox}
-              type="text"
-              autoComplete="off"
-              onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
-              placeholder='Company Name'>
-              </input><br />
+                  <fieldset className={form.formFormat}>
+                    <h3 className={form.fontDisplay}>Company INFO</h3>
 
-              <label className={form.fontTitle}>Does it have a website?</label><br />
-              <input 
-              className={form.placeHolderBox}
-              type="url"
-              onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
-              name="description" placeholder={cardData.companyLink}></input><br />
+                    <label className={form.fontTitle}>Co. Name</label><br />
+                    <input
+                      className={form.placeHolderBox}
+                      type="text"
+                      autoComplete="off"
+                      onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
+                      placeholder='Company Name'>
+                    </input><br />
 
-              <label className={form.fontTitle}>From where?</label><br />
-              <input 
-              className={form.placeHolderBox}
-              type="text" 
-              name=""
-              onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
-              placeholder='Address'></input><br />
-            </fieldset>
+                    <label className={form.fontTitle}>Does it have a website?</label><br />
+                    <input
+                      className={form.placeHolderBox}
+                      type="url"
+                      onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
+                      name="description" placeholder={cardData.companyLink}></input><br />
 
-
-          </div>
-          <div className="functionDATA" >
-            <fieldset className={form.formFormat}>
-              <legend>
+                    <label className={form.fontTitle}>From where?</label><br />
+                    <input
+                      className={form.placeHolderBox}
+                      type="text"
+                      name=""
+                      onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
+                      placeholder='Address'></input><br />
+                  </fieldset>
 
 
-                <h3 className={form.fontDisplay}>Job Function</h3>
-              </legend>
-
-              <label className={form.fontTitle}>Job Function</label><br />
-              <input
-              className={form.placeHolderBox} 
-              type="text" 
-              autoComplete="off"
-              onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
-              placeholder='Working Position'></input>
-
-              <br /><label className={form.fontTitle}>Offer Source</label><br />
-              <input
-              className={form.placeHolderBox} 
-              type="url"
-              onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
-              name="description" placeholder='Where did you find it?' />
-
-              <br /><label className={form.fontTitle}>Offer Link</label><br />
-              <input
-              className={form.placeHolderBox} 
-              type="url"
-              onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
-              name="description" placeholder='Keep here the link' />
-
-              <br /><label className={form.fontTitle}>Salary Range Between</label>
-              <input
-              className={form.placeHolderBox} 
-              type="number"
-              onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
-              name="salary" min="200" max="5000"  step="25" />
-              <label>-</label>
-              <input
-              className={form.placeHolderBox} 
-              type="number"
-              onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
-              name="salary" min="200" max="5000" step="25" />
-                
-                  
-                <datalist className={form.placeHolderBox} id="currency">
-
-                    <option value="EUR €" />
-                    <option value="USD $" />
-                    <option value="GBP £" />
-                    <option value="SIM §" />
-
-                </datalist><br />
+                </div>
+                <div className="functionDATA" >
+                  <fieldset className={form.formFormat}>
+                    <legend>
 
 
+                      <h3 className={form.fontDisplay}>Job Function</h3>
+                    </legend>
+
+                    <label className={form.fontTitle}>Job Function</label><br />
+                    <input
+                      className={form.placeHolderBox}
+                      type="text"
+                      autoComplete="off"
+                      onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
+                      placeholder='Working Position'></input>
+
+                    <br /><label className={form.fontTitle}>Offer Source</label><br />
+                    <input
+                      className={form.placeHolderBox}
+                      type="url"
+                      onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
+                      name="description" placeholder='Where did you find it?' />
+
+                    <br /><label className={form.fontTitle}>Offer Link</label><br />
+                    <input
+                      className={form.placeHolderBox}
+                      type="url"
+                      onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
+                      name="description" placeholder='Keep here the link' />
+
+                    <br /><label className={form.fontTitle}>Salary Range Between</label>
+                    <input
+                      className={form.placeHolderBox}
+                      type="number"
+                      onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
+                      name="salary" min="200" max="5000" step="25" />
+                    <label>-</label>
+                    <input
+                      className={form.placeHolderBox}
+                      type="number"
+                      onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
+                      name="salary" min="200" max="5000" step="25" />
 
 
-                <label className={form.fontTitle} id="Regime">Regime:</label>
-                <input
-                className={form.placeHolderBox}
-                list="regimes"
-                id="Regime"
-                name="regimes"
-                placeholder="Selecione..." />
-                
-                
-                <datalist  id="regimes">
+                    <datalist className={form.placeHolderBox} id="currency">
 
+                      <option value="EUR €" />
+                      <option value="USD $" />
+                      <option value="GBP £" />
+                      <option value="SIM §" />
 
-              <option value="Presencial">
-               
-              </option>
-
-
-              <option value="Remote">
-               
-              </option>
-
-              <option value="Hybrid">
-                
-              </option>
-
-                </datalist>
-                <label className={form.fontTitle} id="Estado">State Funnel:</label>
-                <input
-                className={form.placeHolderBox}
-                list="state"
-                id="Estado"
-                name="state"
-                placeholder="Selecione..." />
-                
-                
-                <datalist  id="state">
-
-
-              <option value="Interest">
-               
-              </option>
-
-
-              <option value="Application Sent">
-               
-              </option>
-
-              <option value="Interview">
-                
-              </option>
-
-              <option value="Awaiting Response">
-                
-              </option>
-
-              <option value="Decision">
-                
-              </option>
-
-                </datalist>
-
-
-            </fieldset>
-          </div>
-
-          </div>
-        <div>
-          <label className={form.fontDisplay}>Observations</label><br />
-          <textarea className={form.placeholder2} onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></textarea><br />
-        </div>
-        </div>
+                    </datalist><br />
 
 
 
-        <div className={form.bottomcontainer}>
+
+                    <label className={form.fontTitle} id="Regime">Regime:</label>
+                    <input
+                      className={form.placeHolderBox}
+                      list="regimes"
+                      id="Regime"
+                      name="regimes"
+                      placeholder="Selecione..." />
+
+
+                    <datalist id="regimes">
+
+
+                      <option value="Presencial">
+
+                      </option>
+
+
+                      <option value="Remote">
+
+                      </option>
+
+                      <option value="Hybrid">
+
+                      </option>
+
+                    </datalist>
+                    <label className={form.fontTitle} id="Estado">State Funnel:</label>
+                    <input
+                      className={form.placeHolderBox}
+                      list="state"
+                      id="Estado"
+                      name="state"
+                      placeholder="Selecione..." />
+
+
+                    <datalist id="state">
+
+
+                      <option value="Interest">
+
+                      </option>
+
+
+                      <option value="Application Sent">
+
+                      </option>
+
+                      <option value="Interview">
+
+                      </option>
+
+                      <option value="Awaiting Response">
+
+                      </option>
+
+                      <option value="Decision">
+
+                      </option>
+
+                    </datalist>
+
+
+                  </fieldset>
+                </div>
+
+              </div>
+              <div>
+                <label className={form.fontDisplay}>Observations</label><br />
+                <textarea className={form.placeholder2} onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></textarea><br />
+              </div>
+            </div>
+
+
+
+            <div className={form.bottomcontainer}>
               <div className="recruiterINFO" >
                 <fieldset className={form.formFormat}>
                   <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
@@ -512,13 +469,13 @@ onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
                 </fieldset>
 
               </div>
-              <div className={form.containerCorrect.interviewINFO}>
+              <div>
 
                 <h3 className={form.fontDisplay}>Interview</h3>
 
                 <label className={form.fontTitle}>Location</label>
                 <input type="text"
-                  className={form.placeHolderBox} 
+                  className={form.placeHolderBox}
                   autoComplete="off"
                   onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
                   placeholder='Address'></input><br />
@@ -540,42 +497,42 @@ onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
 
               </div>
               <div>
-               <label className={form.fontDisplay}>Additional Info</label><br />
+                <label className={form.fontDisplay}>Additional Info</label><br />
                 <input type="text"
                   className={form.placeholder2}
                   name="description"
                   onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
-                  placeholder="Observations" autoComplete="off" /><br /> 
+                  placeholder="Observations" autoComplete="off" /><br />
               </div>
-              
-          </div>
 
-        <span>
-          <br /><br /><input className={styles.button1} type="submit"></input>
-          <input className={styles.button1} type="reset"></input>
-          
-          <button 
-className={styles.button1}
-onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
- <button 
-        className={styles.button1}
-        onClick={(e) => {
-            e.stopPropagation()
-            props.setViewCard(false)
-          }}>VOLTA PARA TRÁS</button>
+            </div>
+
+            <span>
+              <br /><br /><input className={styles.button1} type="submit"></input>
+              <input className={styles.button1} type="reset"></input>
+
+              <button
+                className={styles.button1}
+                onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+              <button
+                className={styles.button1}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  props.setViewCard(false)
+                }}>VOLTA PARA TRÁS</button>
+            </span>
+          </form>
+
+
+
         </span>
-        </form>
+        <span>
 
+        </span>
+        {/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
 
-       
-      </span>
-      <span>
-
-      </span>
- {/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
- 
-    </div>
+      </div>
     </>
-    
+
   }
 }

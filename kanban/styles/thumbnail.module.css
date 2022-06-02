@@ -4,13 +4,13 @@
 .cardDiv {
 	display: flex;
 	position: relative;
-	width: 15em;
-	height: 10em;
-	background: #FBFFFF;
-	box-shadow: -5px 16px 0px -9px rgb(0 0 0 / 25%);
+	width: 250px;
+	height: 170px;
+	background: #d0ecec;
+	box-shadow: -5px 11px 0px -9px rgb(0 0 0 / 25%);
 	border-radius: 7px 9px 0px 24px;
     margin-top: 15px;
-    border: solid 1px blue
+    border: solid 1px rgb(95, 191, 188)
 }
 
 .cardtitles {
@@ -22,26 +22,32 @@
 	font-family: 'Fira Sans Condensed';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 1rem;
+	font-size: 20px;
 	line-height: 24px;
 	color: #113055;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	
 }
 
 .infocontainer {
+	
 	position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     left: 1rem;
 }
 
 .cardinfos {
-	font-family: 'Amiko';
+	font-family: 'Fira Sans Condensed';
+	/* font-family: 'Amiko'; */
 	font-style: normal;
 	font-weight: 400;
-	font-size: 0.8rem;
+	font-size: 16px;
+
 	line-height: 2;
-	color: #00B2CA;
+	color: #000000;
 	margin: 6px;
 }
 

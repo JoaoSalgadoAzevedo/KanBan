@@ -6,7 +6,7 @@
 	height: 100%;
 	left: 0px;
 	top: 0px;
-	background: linear-gradient(180deg, rgba(0, 178, 202, 0.3) 0%, rgba(39, 130, 142, 0) 100%);
+	background: linear-gradient(180deg, #819396 0%, rgba(39, 130, 142, 0) 100%), #113055;
 	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 
 }
@@ -18,8 +18,9 @@
 	right: 0%;
 	top: 0%;
 	bottom: 91.94%;
-	background: #FBFFFF;
+	background: #e9fcfc;
 	align-items: center;
+	border-bottom: 2px solid rgb(113, 222, 222);
 }
 
 .logoPossi {
@@ -29,16 +30,16 @@
 
 .containerColunas {
 	position: relative;
-	display: flex;
-	align-content: center;
-	justify-content: center;
-	width: 70%;
-	height: 100%;
-	background: #FBFFFF;
-	box-shadow: -5px 16px 0px -9px rgb(0 0 0 / 25%);
-	border-radius: 16px;
-	left: 19px;
-	top: 18px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 300px;
+    height: 750px;
+    background: #e9fcfc;
+    box-shadow: -5px 10px 0px -9px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    left: 19px;
+    top: 18px;
 }
 
 .colunaDiv {
@@ -62,10 +63,23 @@
 	font-weight: 1500;
 	font-size: 25px;
 	line-height: 30px;
-	background: linear-gradient(180deg, #00B2CA 0%, #113055 100%);
+	background: linear-gradient(180deg, #2e7881 0%, #113055 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	top: -10px;
+	top: 5px;
 	position: relative;
+
+	
+}
+
+.botaoAdd{
+	height: 50px;
+	width: 250px;
+	font-size: 26px;
+	color: #4a62ea;
+	font-family: 'Fira Sans Condensed';
+	background-color: #d0ecec;
+	border: 1px solid rgb(95, 191, 188);
+
 }

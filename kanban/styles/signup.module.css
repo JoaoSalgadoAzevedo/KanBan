@@ -8,8 +8,10 @@
     padding: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, #00B2CA 0%, rgba(39, 130, 142, 0) 100%), #113055;
-    align-items: center;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(180deg, #819396 0%, rgba(39, 130, 142, 0) 100%), #113055;
+        align-items: center;
     justify-content: center;
   
   }
