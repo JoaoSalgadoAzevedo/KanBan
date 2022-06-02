@@ -6,6 +6,7 @@ import smallcard from "../../../styles/thumbnail.module.css"
 
 export default function CardThumbnail(props) {
 
+
   // const [open, setOpen] = useState(false)
   //aqui vai ter que ter um state ou route em que tu clicas e abre o cartao sem inputs, so com a informação
   //estilo onClick={}
@@ -26,7 +27,9 @@ export default function CardThumbnail(props) {
           <span className={smallcard.cardinfos}>{props.jobFunction}</span>
         </div>
         <span><p className={smallcard.dateTexto}>{props.creationDate}</p></span>
-       {props.viewCard === props.CardId &&  <OpenCard {...props} setViewCard={(a) => props.setViewCard(a)}/>}
+       {props.viewCard === props.CardId &&  <OpenCard
+       {...props} 
+        setViewCard={(a) => props.setViewCard(a)}/>}
       </div>
 
       {/* <p>{props.companyName}</p>

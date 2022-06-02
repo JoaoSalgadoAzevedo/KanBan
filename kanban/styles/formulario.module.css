@@ -20,6 +20,24 @@
 	/* border-color: #113055;
 	background-color: aliceblue; */
 }
+
+.formMaindiv2 {
+    background: rgba(255, 248, 248, 0.97);
+	box-shadow: -6px 4px 0px 3px rgb(0 0 0 / 15%);
+	border-radius: 10px;
+	justify-content: center;
+	box-sizing: border-box;
+	position: fixed;
+	width: 75%;
+	height: 75%;
+	left: 334px;
+	top: 121px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: 10;
+}
+
 .containerCorrect{
 	display: flex;
     flex-direction: column;
@@ -32,6 +50,7 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: flex-start;
+	position: absolute;
 }
 
 .topcontainer {

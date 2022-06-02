@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
-export default function OpenCardEdit() {
+// import { render } from "react-dom/cjs/react-dom.production.min";
 
-  const [edit, setEdit] = useState(false)
+import { render } from "react-dom";
+export default function OpenCardEdit(props) {
+
+  // const [openAndEdit, setOpenAndEdit] = useState(false)
 
   const [cardData, setCardData] = useState({
     stateFunnel: "",
@@ -58,10 +61,15 @@ export default function OpenCardEdit() {
 
   return (
     //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: CardData.XXXXX
+    
+    <>
+    
+    <button onClick={() => props.setViewCard(props.CardId)}>EDITARMERDAS</button>
+    
     <div>
       <span>
         <form
-        className={form.formMaindiv} 
+        className={form.formMaindiv2} 
         onSubmit={(e) => {
           e.preventDefault()
           editCard()
@@ -77,16 +85,16 @@ export default function OpenCardEdit() {
 
               <label className={form.fontTitle}>Co. Name</label><br />
               <p>{cardData.companyName}</p>
-              <br />
+              
             
 
               <label className={form.fontTitle}>Does it have a website?</label><br />
-              <p>Company Link: {cardData.companyLink}</p>
-              <br />
+              <p>{cardData.companyLink}</p>
+              
 
               <label className={form.fontTitle}>From where?</label><br />
-              <p>Location: {cardData.companyLocation}</p>
-              <br />
+              <p>{cardData.companyLocation}</p>
+              
             </fieldset>
 
 
@@ -99,34 +107,35 @@ export default function OpenCardEdit() {
                 <h3 className={form.fontDisplay}>Job Function</h3>
               </legend>
 
-              <label className={form.fontTitle}>Job Function</label><br />
-              <p>Job Function: {cardData.jobFunction}</p>
+              <label className={form.fontTitle}>Job Function</label>
+              <p>{cardData.jobFunction}</p>
               
 
-              <br /><label className={form.fontTitle}>Offer Source</label><br />
-              <p>Offer Source: {cardData.offerSource}</p>
+              <br /><label className={form.fontTitle}>Offer Source</label>
+              <p>{cardData.offerSource}</p>
               
 
-              <br /><label className={form.fontTitle}>Offer Link</label><br />
-              <p>Offer Link: {cardData.offerLink}</p>
+              <br /><label className={form.fontTitle}>Offer Link</label>
+              <p>{cardData.offerLink}</p>
               
 
-              <br /><label className={form.fontTitle}>Salary Range Between</label>
-              <p>Salary Range Between: {cardData.salaryRangeMax} - {cardData.salaryRangeMin}</p>
+              <label className={form.fontTitle}>Salary Range Between</label>
+              <p>{cardData.salaryRangeMax}{cardData.salaryRangeMin}</p>
+
               
                 <select className={form.placeHolderBox}>
                   
-                  <option>Euro   â¬</option>
+                  <option>Euro   €</option>
                   <option>Dolar  $</option>
                   <option>Cenas ai</option>
 
-                  </select><br />
+                  </select>
 
 
 
 
                 <label className={form.fontTitle} id="Regime">Regime:</label>
-                <p>Regime: {cardData.regime}</p>
+                <p>{cardData.regime}</p>
                 
                 
                 <datalist  id="regimes">
@@ -147,7 +156,7 @@ export default function OpenCardEdit() {
 
                 </datalist>
                 <label className={form.fontTitle} id="Estado">State Funnel:</label>
-                <p>State Funnel: {cardData.stateFunnel}</p>
+                <p>{cardData.stateFunnel}</p>
                 
                 
                 
@@ -182,7 +191,7 @@ export default function OpenCardEdit() {
           </div>
 
           </div>
-        <div>
+        <div><br/>
           <label className={form.fontDisplay}>Observations</label><br />
           <textarea 
           className={form.placeholder2} 
@@ -199,21 +208,21 @@ export default function OpenCardEdit() {
                 <fieldset className={form.formFormat}>
                   <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
 
-                  <label className={form.fontTitle}>Name</label><br />
+                  <label className={form.fontTitle}>Name</label>
                   <p>{cardData.nomeRecruiter}</p>
-                  <br />
+                
 
-                  <label className={form.fontTitle}>Email</label><br />
-                  <p>Email: {cardData.emailRecruiter}</p>
+                  <label className={form.fontTitle}>Email</label>
+                  <p>{cardData.emailRecruiter}</p>
                   
 
-                  <br /><label className={form.fontTitle}>Contact</label><br />
-                  <p>Contact: {cardData.telRecruiter}</p>
+                  <label className={form.fontTitle}>Contact</label>
+                  <p>{cardData.telRecruiter}</p>
                   
 
-                  <br /><label className={form.fontTitle}>Linkedin</label><br />
-                  <p>Linkedin: {cardData.linkedinRecruiter}</p>
-                  <br />
+                  <label className={form.fontTitle}>Linkedin</label>
+                  <p>{cardData.linkedinRecruiter}</p>
+                  
                 </fieldset>
 
               </div>
@@ -222,37 +231,308 @@ export default function OpenCardEdit() {
                 <h3 className={form.fontDisplay}>Interview</h3>
 
                 <label className={form.fontTitle}>Location</label>
-                <p>Location: {cardData.appointmentLocation}</p>
-                <br />
+                <p>{cardData.appointmentLocation}</p>
+                
 
                 <label className={form.fontTitle}>Next Interview</label>
-                <p>Next Interview: {cardData.appointmentData}</p>
-                <br />
+                <p>{cardData.appointmentData}</p>
+                
 
                 <label className={form.fontTitle}>Last Interview</label>
-                <p>Last Interview: {cardData.lastAppointment}</p>
+                <p>{cardData.lastAppointment}</p>
                
-
-                <br />
 
 
               </div>
               <div>
                <label className={form.fontDisplay}>Additional Info</label><br />
-                <p>Additional Info:  {cardData.appoimentInformation}</p><br /> 
+                <p>{cardData.appoimentInformation}</p>
               </div>
               
           </div>
 {/* Aqui no botao de submit Ã© que ele vai fazer o route de volta para a plataforma */}
-        <span>
-          <br /><br /><input className={styles.button1} type="submit"></input>
+        <span className={styles.spanBotoes}>
+          <input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
           <button className={styles.button1}>Go back</button>
+          <button className={styles.button1} onClick={render(
+
+<div>
+<span>
+
+
+
+  <form
+  className={form.formMaindiv} 
+  onSubmit={(e) => {
+    e.preventDefault()
+    editCard()
+    // router.push("/plataforma")
+    //AQUI LEVA A FUNCAO DE SUBMIT
+  }}>
+  
+    <div className={form.topcontainer}>
+    <div className={form.companiDiv}>
+    <div className="companyINFO" >
+
+      <fieldset className={form.formFormat}>
+        <h3 className={form.fontDisplay}>Company INFO</h3>
+
+        <label className={form.fontTitle}>Co. Name</label><br />
+        <input
+        className={form.placeHolderBox}
+        type="text"
+        autoComplete="off"
+        onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
+        placeholder='Company Name'>
+        </input><br />
+
+        <label className={form.fontTitle}>Does it have a website?</label><br />
+        <input 
+        className={form.placeHolderBox}
+        type="url"
+        onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
+        name="description" placeholder={cardData.companyLink}></input><br />
+
+        <label className={form.fontTitle}>From where?</label><br />
+        <input 
+        className={form.placeHolderBox}
+        type="text" 
+        name=""
+        onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
+        placeholder='Address'></input><br />
+      </fieldset>
+
+
+    </div>
+    <div className="functionDATA" >
+      <fieldset className={form.formFormat}>
+        <legend><h3 
+          className={form.fontDisplay}>
+            Job Function</h3>
+        </legend>
+
+        <label 
+        className={form.fontTitle}>
+          Job Function</label><br />
+        <input
+        className={form.placeHolderBox} 
+        type="text" 
+        autoComplete="off"
+        onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
+        placeholder='Working Position'></input>
+
+        <br /><label className={form.fontTitle}>Offer Source</label><br />
+        <input
+        className={form.placeHolderBox} 
+        type="url"
+        onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
+        name="description" placeholder='Where did you find it?' />
+
+        <br /><label className={form.fontTitle}>Offer Link</label><br />
+        <input
+        className={form.placeHolderBox} 
+        type="url"
+        onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
+        name="description" placeholder='Keep here the link' />
+
+        <br /><label className={form.fontTitle} id="currency">Salary Range Between</label>
+        <input
+        className={form.placeHolderBox} 
+        type="number"
+        onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
+        name="salary" min="200" max="5000"  step="25" />
+        <label>-</label>
+        <input
+        className={form.placeHolderBox} 
+        type="number"
+        onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
+        name="salary" min="200" max="5000" step="25" />
+          
+            
+          <datalist className={form.placeHolderBox} id="currency">
+
+              <option value="EUR €" />
+              <option value="USD $" />
+              <option value="GBP £" />
+              <option value="SIM §" />
+
+          </datalist><br />
+
+
+
+
+          <label className={form.fontTitle} id="Regime">Regime:</label>
+          <input
+          className={form.placeHolderBox}
+          list="regimes"
+          id="Regime"
+          name="regimes"
+          placeholder="Selecione..." />
+          
+          
+          <datalist  id="regimes">
+
+
+        <option value="Presencial">
+         
+        </option>
+
+
+        <option value="Remote">
+         
+        </option>
+
+        <option value="Hybrid">
+          
+        </option>
+
+          </datalist>
+          <label className={form.fontTitle} id="Estado">State Funnel:</label>
+          <input
+          className={form.placeHolderBox}
+          list="state"
+          id="Estado"
+          name="state"
+          placeholder="Selecione..." />
+          
+          
+          <datalist  id="state">
+
+
+        <option value="Interest">
+         
+        </option>
+
+
+        <option value="Application Sent">
+         
+        </option>
+
+        <option value="Interview">
+          
+        </option>
+
+        <option value="Awaiting Response">
+          
+        </option>
+
+        <option value="Decision">
+          
+        </option>
+
+          </datalist>
+
+
+      </fieldset>
+    </div>
+
+    </div>
+  <div>
+    <label className={form.fontDisplay}>Observations</label><br />
+    <textarea className={form.placeholder2} onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></textarea><br />
+  </div>
+  </div>
+
+
+
+  <div className={form.bottomcontainer}>
+        <div className="recruiterINFO" >
+          <fieldset className={form.formFormat}>
+            <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
+
+            <label className={form.fontTitle}>Name</label><br />
+            <input className={form.placeHolderBox} type="text" autoComplete="off"
+              onChange={(e) => setCardData({ ...cardData, nomeRecruiter: e.target.value })}
+              placeholder='Person Name'></input><br />
+
+            <label className={form.fontTitle}>Email</label><br />
+            <input type="email"
+              className={form.placeHolderBox}
+              onChange={(e) => setCardData({ ...cardData, emailRecruiter: e.target.value })}
+              name="description" placeholder='Do you have an email?' />
+
+            <br /><label className={form.fontTitle}>Contact</label><br />
+            <input type="number"
+              className={form.placeHolderBox}
+              onChange={(e) => setCardData({ ...cardData, telRecruiter: e.target.value })}
+              name="and contact?" />
+
+            <br /><label className={form.fontTitle}>Linkedin</label><br />
+            <input type="url"
+              className={form.placeHolderBox}
+              name="description"
+              onChange={(e) => setCardData({ ...cardData, linkedinRecruiter: e.target.value })}
+              placeholder="Linkedin?" autoComplete="off" /><br />
+          </fieldset>
+
+        </div>
+        <div className={form.containerCorrect.interviewINFO}>
+
+          <h3 className={form.fontDisplay}>Interview</h3>
+
+          <label className={form.fontTitle}>Location</label>
+          <input type="text"
+            className={form.placeHolderBox} 
+            autoComplete="off"
+            onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
+            placeholder='Address'></input><br />
+
+          <label className={form.fontTitle}>Next Interview</label>
+          <input type="datetime-local"
+            className={form.placeHolderBox}
+            onChange={(e) => setCardData({ ...cardData, appointmentData: e.target.value })}
+            name="description" min="19/05/2022" /><br />
+
+          <label className={form.fontTitle}>Last interview</label>
+          <input type="datetime-local"
+            className={form.placeHolderBox}
+            onChange={(e) => setCardData({ ...cardData, lastAppointment: e.target.value })}
+            name="description" />
+
+          <br />
+
+
+        </div>
+        <div>
+         <label className={form.fontDisplay}>Additional Info</label><br />
+          <input type="text"
+            className={form.placeholder2}
+            name="description"
+            onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
+            placeholder="Observations" autoComplete="off" /><br /> 
+        </div>
+        
+    </div>
+
+  <span>
+    <br /><br /><input className={styles.button1} type="submit"></input>
+    <input className={styles.button1} type="reset"></input>
+    
+    
+  </span>
+  </form>
+
+
+  <button 
+  className={styles.buttonBack}
+  onClick={(e) => {
+    e.stopPropagation()
+    props.setViewCard(false)
+    }}>VOLTA PARA TRÁS</button>
+</span>
+<span>
+
+</span>
+{/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
+
+</div>
+
+
+          )}>Go back</button>
           
         </span>
-          
-
-<p>bom dia</p>
+        
         </form>
         
       </span>
@@ -262,5 +542,6 @@ export default function OpenCardEdit() {
 
 
     </div>
+  </>
   )
 }

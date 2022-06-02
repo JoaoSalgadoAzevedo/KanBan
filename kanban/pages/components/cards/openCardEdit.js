@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react"
 import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
-export default function OpenCardEdit() {
 
-  const [edit, setEdit] = useState(false)
+// import {useRouter} from "next/router"
+// import OpenCardEdit from "../cards/paragrafos"
+
+
+export default function OpenCard(props) {
+
+
+  // const [openAndEdit, setOpenAndEdit] = useState(false)
+  
 
   const [cardData, setCardData] = useState({
     stateFunnel: "",
@@ -28,43 +35,67 @@ export default function OpenCardEdit() {
     lastAppointment: ""
   });
 
+ 
+// Não estamos a conseguir colocar a prop cardId sem ele chorar. 
+// Para fazer fetch temos que conseguir fazer chegar cardId ao API.
+
+// Colocámos cardId no ultimo parametro do useEffect e parou de chorar
+
   useEffect(() => {
+    console.log(props)
     async function callCard() {
       const res = await fetch(
-        '../../api/catchCard', {
-        method: "GET"
+        `../../api/catchCard?id=${props.CardId}`, {
+          ////ISTO NAO ESTÁ A FUNCIONAR COM O CARD_ID, tentar perceber pq
+        headers: {
+            "Content-Type": "application/json",
+            "Authenticate": localStorage.getItem("tokenG3")
+          },
+        method: "POST"
       })
-      console.log(res)
-      const json = await res.json()
-      setCardData(json.a)
-      console.log("Fim do UseEffect")
+      console.log('resposta', res.status)
+      if (res.status === 200) {
+        const json = await res.json()
+        setCardData(json.a)
+        console.log("Fim do UseEffect")
+      }
     }
     callCard()
-  }, [])
+  }, [props.CardId])
 
-
-  const editCard = async () => {
+// AINDA FALTA FAZER. Basta copiar o que já está feito para criar o cartão e alterar para update. 
+//Possivelmente temos que ver o "data" pq pode ser necessária uma função nova para o mongoDB
+  
+const editCard = async () => {
     const res = await fetch(
       '../../api/editCard', {
       body: JSON.stringify(cardData),
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST"
+      method: "PATCH"
     })
     const json = await res.json() 
     console.log(cardData, res.status, json)
   }
 
   return (
-    //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: CardData.XXXXX
+    //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: cardData.XXXXX
+    <>
+    
+   
+    
     <div>
       <span>
+      
+      
+
         <form
         className={form.formMaindiv} 
         onSubmit={(e) => {
           e.preventDefault()
           editCard()
+          // router.push("/plataforma")
           //AQUI LEVA A FUNCAO DE SUBMIT
         }}>
         
@@ -78,78 +109,83 @@ export default function OpenCardEdit() {
               <label className={form.fontTitle}>Co. Name</label><br />
               <input
               className={form.placeHolderBox}
-                type="text"
-                autoComplete="off"
-                onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
-                placeholder={cardData.companyName}>
+              type="text"
+              autoComplete="off"
+              onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
+              placeholder='Company Name'>
               </input><br />
 
               <label className={form.fontTitle}>Does it have a website?</label><br />
               <input 
               className={form.placeHolderBox}
               type="url"
-                onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
-                name="description" placeholder={cardData.companyLink}></input><br />
+              onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
+              name="description" placeholder={cardData.companyLink}></input><br />
 
               <label className={form.fontTitle}>From where?</label><br />
               <input 
               className={form.placeHolderBox}
               type="text" 
+              name=""
               onChange={(e) => setCardData({ ...cardData, companyLocation: e.target.value })}
-              placeholder={cardData.companyLocation}></input><br />
+              placeholder='Address'></input><br />
             </fieldset>
 
 
           </div>
           <div className="functionDATA" >
             <fieldset className={form.formFormat}>
-              <legend>
-
-
-                <h3 className={form.fontDisplay}>Job Function</h3>
+              <legend><h3 
+                className={form.fontDisplay}>
+                  Job Function</h3>
               </legend>
 
-              <label className={form.fontTitle}>Job Function</label><br />
+              <label 
+              className={form.fontTitle}>
+                Job Function</label><br />
               <input
               className={form.placeHolderBox} 
               type="text" 
               autoComplete="off"
-                onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
-                placeholder={cardData.jobFunction}></input>
+              onChange={(e) => setCardData({ ...cardData, jobFunction: e.target.value })}
+              placeholder='Working Position'></input>
 
               <br /><label className={form.fontTitle}>Offer Source</label><br />
               <input
               className={form.placeHolderBox} 
               type="url"
-                onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
-                name="description" placeholder={cardData.offerSource} />
+              onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
+              name="description" placeholder='Where did you find it?' />
 
               <br /><label className={form.fontTitle}>Offer Link</label><br />
               <input
               className={form.placeHolderBox} 
               type="url"
-                onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
-                name="description" placeholder={cardData.offerLink} />
+              onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
+              name="description" placeholder='Keep here the link' />
 
-              <br /><label className={form.fontTitle}>Salary Range Between</label>
+              <br /><label className={form.fontTitle} id="currency">Salary Range Between</label>
               <input
               className={form.placeHolderBox} 
               type="number"
-                onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
-                name="salary" min="200" max="5000"  step="25" />
+              onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
+              name="salary" min="200" max="5000"  step="25" />
               <label>-</label>
               <input
               className={form.placeHolderBox} 
               type="number"
-                onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
-                name="salary" min="200" max="5000" step="25" />
-                <select className={form.placeHolderBox}>
+              onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
+              name="salary" min="200" max="5000" step="25" />
+                
                   
-                  <option>Euro   €</option>
-                  <option>Dolar  $</option>
-                  <option>Cenas ai</option>
+                <datalist className={form.placeHolderBox} id="currency">
 
-                  </select><br />
+                    <option value="EUR €" />
+                    <option value="USD $" />
+                    <option value="GBP £" />
+                    <option value="SIM §" />
+
+                </datalist><br />
 
 
 
@@ -160,7 +196,7 @@ export default function OpenCardEdit() {
                 list="regimes"
                 id="Regime"
                 name="regimes"
-                placeholder={cardData.regime} />
+                placeholder="Selecione..." />
                 
                 
                 <datalist  id="regimes">
@@ -186,7 +222,7 @@ export default function OpenCardEdit() {
                 list="state"
                 id="Estado"
                 name="state"
-                placeholder={cardData.stateFunnel} />
+                placeholder="Selecione..." />
                 
                 
                 <datalist  id="state">
@@ -222,11 +258,7 @@ export default function OpenCardEdit() {
           </div>
         <div>
           <label className={form.fontDisplay}>Observations</label><br />
-          <textarea 
-          className={form.placeholder2} 
-          onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} 
-          type="text"
-          placeholder={cardData.observations}></textarea><br />
+          <textarea className={form.placeholder2} onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} type="text"></textarea><br />
         </div>
         </div>
 
@@ -238,29 +270,28 @@ export default function OpenCardEdit() {
                   <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
 
                   <label className={form.fontTitle}>Name</label><br />
-                  <input 
-                  className={form.placeHolderBox} 
-                  type="text" autoComplete="off"
+                  <input className={form.placeHolderBox} type="text" autoComplete="off"
                     onChange={(e) => setCardData({ ...cardData, nomeRecruiter: e.target.value })}
-                    placeholder={cardData.nomeRecruiter}></input><br />
+                    placeholder='Person Name'></input><br />
 
                   <label className={form.fontTitle}>Email</label><br />
                   <input type="email"
                     className={form.placeHolderBox}
                     onChange={(e) => setCardData({ ...cardData, emailRecruiter: e.target.value })}
-                    placeholder={cardData.emailRecruiter} />
+                    name="description" placeholder='Do you have an email?' />
 
                   <br /><label className={form.fontTitle}>Contact</label><br />
                   <input type="number"
                     className={form.placeHolderBox}
                     onChange={(e) => setCardData({ ...cardData, telRecruiter: e.target.value })}
-                    placeholder={cardData.telRecruiter} />
+                    name="and contact?" />
 
                   <br /><label className={form.fontTitle}>Linkedin</label><br />
                   <input type="url"
                     className={form.placeHolderBox}
+                    name="description"
                     onChange={(e) => setCardData({ ...cardData, linkedinRecruiter: e.target.value })}
-                    placeholder={cardData.linkedinRecruiter} autoComplete="off" /><br />
+                    placeholder="Linkedin?" autoComplete="off" /><br />
                 </fieldset>
 
               </div>
@@ -273,7 +304,7 @@ export default function OpenCardEdit() {
                   className={form.placeHolderBox} 
                   autoComplete="off"
                   onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
-                  placeholder={cardData.appointmentLocation}></input><br />
+                  placeholder='Address'></input><br />
 
                 <label className={form.fontTitle}>Next Interview</label>
                 <input type="datetime-local"
@@ -297,28 +328,33 @@ export default function OpenCardEdit() {
                   className={form.placeholder2}
                   name="description"
                   onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
-                  placeholder={cardData.appoimentInformation} autoComplete="off" /><br /> 
+                  placeholder="Observations" autoComplete="off" /><br /> 
               </div>
               
           </div>
-{/* Aqui no botao de submit é que ele vai fazer o route de volta para a plataforma */}
+
         <span>
           <br /><br /><input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
-          <button className={styles.button1}>Go back</button>
+          
           
         </span>
-          
-
-<p>bom dia</p>
         </form>
-        
+
+
+        <button 
+        className={styles.button1}
+        onClick={(e) => {
+          e.stopPropagation()
+          props.setViewCard(false)
+          }}>VOLTA PARA TRÁS</button>
       </span>
       <span>
 
       </span>
-
+ {/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
 
     </div>
+          </>
   )
 }

@@ -29,8 +29,8 @@ return (
 
 
   <div className='colunas'>
-    <h2>Application Sent</h2>
-    <button className="botaoAdicionar">BOTAO</button>
+    <h2 className={colunas.textocoluna}>Application Sent</h2>
+    
 
     {
       

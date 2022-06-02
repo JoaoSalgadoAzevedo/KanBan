@@ -2,14 +2,13 @@ import { useState, useEffect } from "react"
 import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
 // import {useRouter} from "next/router"
+// import styles from "../../../styles/testes.module.css"
+// import form from "../../../styles/testes1FORM.module.css"
 
 
 export default function OpenCard(props) {
+  const [openAndEdit, setOpenAndEdit] = useState(false)
 
-  // const [edit, setEdit] 
-  
-  // const router = useRouter()
-  // const [Edit, setEdit] = useState(false)
   const [cardData, setCardData] = useState({
     stateFunnel: "",
     creationDate: "",
@@ -76,25 +75,247 @@ const editCard = async () => {
     const json = await res.json() 
     console.log(cardData, res.status, json)
   }
+if(!openAndEdit){
+
+  
+
 
   return (
     //TODOS OS INPUTS PRECISAM DE APRESENTAR PLACEHOLDER: cardData.XXXXX
     
+
+  <div>
+  <span>
+    <form
+    className={form.formMaindiv2} 
+    onSubmit={(e) => {
+      e.preventDefault()
+      editCard()
+      //AQUI LEVA A FUNCAO DE SUBMIT
+    }}>
     
+      <div className={form.topcontainer}>
+      <div className={form.companiDiv}>
+      <div className="companyINFO" >
+
+        <fieldset className={form.formFormat}>
+          <h3 className={form.fontDisplay}>Company INFO</h3>
+
+          <label className={form.fontTitle}>Co. Name</label><br />
+          <p>{cardData.companyName}</p>
+          
+        
+
+          <label className={form.fontTitle}>Does it have a website?</label><br />
+          <p>{cardData.companyLink}</p>
+          
+
+          <label className={form.fontTitle}>From where?</label><br />
+          <p>{cardData.companyLocation}</p>
+          
+        </fieldset>
+
+
+      </div>
+      <div className="functionDATA" >
+        <fieldset className={form.formFormat}>
+          <legend>
+
+
+            <h3 className={form.fontDisplay}>Job Function</h3>
+          </legend>
+
+          <label className={form.fontTitle}>Job Function</label>
+          <p>{cardData.jobFunction}</p>
+          
+
+          <br /><label className={form.fontTitle}>Offer Source</label>
+          <p>{cardData.offerSource}</p>
+          
+
+          <br /><label className={form.fontTitle}>Offer Link</label>
+          <p>{cardData.offerLink}</p>
+          
+
+          <label className={form.fontTitle}>Salary Range Between</label>
+          <p>{cardData.salaryRangeMax}{cardData.salaryRangeMin}</p>
+
+          
+            <select className={form.placeHolderBox}>
+              
+              <option>Euro   €</option>
+              <option>Dolar  $</option>
+              <option>Cenas ai</option>
+
+              </select>
+
+
+
+
+            <label className={form.fontTitle} id="Regime">Regime:</label>
+            <p>{cardData.regime}</p>
+            
+            
+            <datalist  id="regimes">
+
+
+          <option value="Presencial">
+           
+          </option>
+
+
+          <option value="Remote">
+           
+          </option>
+
+          <option value="Hybrid">
+            
+          </option>
+
+            </datalist>
+            <label className={form.fontTitle} id="Estado">State Funnel:</label>
+            <p>{cardData.stateFunnel}</p>
+            
+            
+            
+            <datalist  id="state">
+
+
+          <option value="Interest">
+           
+          </option>
+
+
+          <option value="Application Sent">
+           
+          </option>
+
+          <option value="Interview">
+            
+          </option>
+
+          <option value="Awaiting Response">
+            
+          </option>
+
+          <option value="Decision">
+            
+          </option>
+
+            </datalist>
+
+
+        </fieldset>
+      </div>
+
+      </div>
+    <div><br/>
+      <label className={form.fontDisplay}>Observations</label><br />
+      <textarea 
+      className={form.placeholder2} 
+      onChange={(e) => setCardData({ ...cardData, observations: e.target.value })} 
+      type="text"
+      placeholder={cardData.observations}></textarea><br />
+    </div>
+    </div>
+
+
+
+    <div className={form.bottomcontainer}>
+          <div className="recruiterINFO" >
+            <fieldset className={form.formFormat}>
+              <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
+
+              <label className={form.fontTitle}>Name</label>
+              <p>{cardData.nomeRecruiter}</p>
+            
+
+              <label className={form.fontTitle}>Email</label>
+              <p>{cardData.emailRecruiter}</p>
+              
+
+              <label className={form.fontTitle}>Contact</label>
+              <p>{cardData.telRecruiter}</p>
+              
+
+              <label className={form.fontTitle}>Linkedin</label>
+              <p>{cardData.linkedinRecruiter}</p>
+              
+            </fieldset>
+
+          </div>
+          <div className={form.containerCorrect.interviewINFO}>
+
+            <h3 className={form.fontDisplay}>Interview</h3>
+
+            <label className={form.fontTitle}>Location</label>
+            <p>{cardData.appointmentLocation}</p>
+            
+
+            <label className={form.fontTitle}>Next Interview</label>
+            <p>{cardData.appointmentData}</p>
+            
+
+            <label className={form.fontTitle}>Last Interview</label>
+            <p>{cardData.lastAppointment}</p>
+           
+
+
+          </div>
+          <div>
+           <label className={form.fontDisplay}>Additional Info</label><br />
+            <p>{cardData.appoimentInformation}</p>
+          </div>
+          
+      </div>
+{/* Aqui no botao de submit Ã© que ele vai fazer o route de volta para a plataforma */}
+    <span className={styles.spanBotoes}>
+      {/* <input className={styles.button1} type="submit"></input>
+      <input className={styles.button1} type="reset"></input> */}
+    
+
+
+
+      <button 
+className={styles.button1}
+onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+        
+        
+     <button 
+     className={styles.button1}
+     onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button> 
+      
+    </span>
+    
+    </form>
+    
+  </span>
+  <span>
+
+  </span>
+
+
+</div>
+)
+    
+  } else{
+    <>
+    
+   
     <div>
+      
       <span>
       
       
 
 
         <form
+        action="/plataforma"
         className={form.formMaindiv} 
         onSubmit={(e) => {
           e.preventDefault()
           editCard()
-          // router.push("/plataforma")
-          //AQUI LEVA A FUNCAO DE SUBMIT
-        }}>
+            }}>
         
           <div className={form.topcontainer}>
           <div className={form.companiDiv}>
@@ -172,13 +393,16 @@ const editCard = async () => {
               type="number"
               onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
               name="salary" min="200" max="5000" step="25" />
-                <select className={form.placeHolderBox}>
+                
                   
-                  <option>Euro   €</option>
-                  <option>Dolar    $</option>
-                  <option>Cenas ai</option>
+                <datalist className={form.placeHolderBox} id="currency">
 
-                  </select><br />
+                    <option value="EUR €" />
+                    <option value="USD $" />
+                    <option value="GBP £" />
+                    <option value="SIM §" />
+
+                </datalist><br />
 
 
 
@@ -330,23 +554,28 @@ const editCard = async () => {
           <br /><br /><input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
           
-          
-        </span>
-        </form>
-
-
-        <button 
-        className={styles.buttonBack}
+          <button 
+className={styles.button1}
+onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+ <button 
+        className={styles.button1}
         onClick={(e) => {
             e.stopPropagation()
             props.setViewCard(false)
           }}>VOLTA PARA TRÁS</button>
+        </span>
+        </form>
+
+
+       
       </span>
       <span>
 
       </span>
  {/* AO CLICAR NO BOTAO EDITAR (CHAVE INGLESA), ELE PASSA A FAZER DISPLAY DE INPUTS/LABELS PASSIVEIS DE ALTERAÇAO */}
-
+ 
     </div>
-  )
+    </>
+    
+  }
 }

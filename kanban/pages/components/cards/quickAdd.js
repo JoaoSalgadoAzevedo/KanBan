@@ -6,7 +6,7 @@ import {useRouter} from "next/router"
 
 
 export default function QuickAdd(props) {
-  // const router = useRouter()
+  const router = useRouter()
   
   const [QuickAdd, setQuickAdd] = useState({
     // Card_Id: "_id",
@@ -47,6 +47,7 @@ export default function QuickAdd(props) {
     })
     console.log("Adeus")
     const json = await res.json()
+
     //route para plataforma
     console.log(QuickAdd, res.status, json)
   }
@@ -58,9 +59,11 @@ export default function QuickAdd(props) {
       <span>
         <form
         className={form.formMaindiv} 
-        onSubmit={(e) => {
-          e.preventDefault(),
+          onSubmit={() => {
+            // e.preventDefault(),
             submit()
+            props.setAddCard(false)
+            
         }}>
 
 {/* <div className={form.topcontainer}>
@@ -110,7 +113,7 @@ export default function QuickAdd(props) {
 
 
 
-<br /><label className={form.fontTitle}>Salary Range Between</label>
+<br /><label className={form.fontTitle} id="Range">Monthly Salary Range Between</label>
               <input
               className={form.placeHolderBox}  
               type="number"
@@ -122,13 +125,20 @@ export default function QuickAdd(props) {
               type="number"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, salaryRangeMax: e.target.value })}
                 name="salary" min="200" max="5000" step="25" />
-              <select>
+                <input
+                className={form.placeHolderBox}
+                list="currency"
+                id="Range"
+                name="currency"
+                placeholder="Selecione..." />
+              <datalist id="currency">
 
-                <option>Euro   €</option>
-                <option>Dolar    $</option>
-                <option>Cenas ai</option>
+                <option value="EUR €" />
+                <option value="USD $" />
+                <option value="GBP £" />
+                <option value="SIM §" />
 
-              </select><br />
+              </datalist><br />
 
 
 
@@ -143,20 +153,9 @@ export default function QuickAdd(props) {
                 
                 
                 <datalist  id="regimes">
-
-
-              <option value="Presencial">
-               
-              </option>
-
-
-              <option value="Remote">
-               
-              </option>
-
-              <option value="Hybrid">
-                
-              </option>
+              <option value="Presencial" />
+              <option value="Remote" />
+              <option value="Hybrid" />
 
                 </datalist>
 
@@ -172,33 +171,12 @@ export default function QuickAdd(props) {
                 
                 <datalist  id="state">
 
-
-              <option value="Interest">
-               
-              </option>
-
-
-              <option value="Application Sent">
-               
-              </option>
-
-              <option value="Interview">
-                
-              </option>
-
-              <option value="Awaiting Response">
-                
-              </option>
-
-              <option value="Decision">
-                
-              </option>
-
+              <option value="Interest" />
+              <option value="Application Sent" />
+              <option value="Interview" />
+              <option value="Awaiting Response" />
+              <option value="Decision" />
                 </datalist>
-
-
-
-
 
             </fieldset>
           </div>
@@ -207,7 +185,9 @@ export default function QuickAdd(props) {
           <span>
           <br /><br /><input className={styles.button1} type="submit"></input>
           <input className={styles.button1} type="reset"></input>
-          <button onClick={() => props.setAddCard(false)}>CONSEGUI FODASSE</button>
+          <button 
+          className={styles.button1}
+          onClick={() => props.setAddCard(false)}>VOLTAR ATRÁS</button>
         </span>
 
         </form>

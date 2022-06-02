@@ -30,7 +30,7 @@ export default function Coluna1(props) {
 
 
     <div className='colunas'>
-      <h2>Interest</h2>
+      <h2 className={colunas.textocoluna}>Interest</h2>
       <button 
       onClick={() => props.setAddCard(true)}
       className="botaoAdicionar">Add Card</button>
