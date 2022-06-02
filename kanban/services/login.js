@@ -5,7 +5,7 @@ export async function confirmPassEmail(email, password, res){
         //verificar se o email existe   
         if (!user) {
             //se não, 404 e { "message": "O utilizador não foi encontrado!" }
-            return res.status(404).json({ message: "O utilizador não foi encontrado!" })
+            return res.status(404).json({ message: "O email não foi encontrado!" })
         }
         //se a password é igual
         if (user.Password !== password) {

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
 
 .maindiv {
 	position: absolute;
@@ -6,8 +7,10 @@
 	height: 100%;
 	left: 0px;
 	top: 0px;
-	background: linear-gradient(180deg, #819396 0%, rgba(39, 130, 142, 0) 100%), #113055;
+	background: linear-gradient(180deg, #00B2CA 20.83%, #113055 100%);
 	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+	display: flex;
+	flex-wrap: wrap;
 
 }
 
@@ -18,9 +21,10 @@
 	right: 0%;
 	top: 0%;
 	bottom: 91.94%;
-	background: #e9fcfc;
+	background: #FBFFFF;
+	box-shadow: -5px 16px 0px -9px rgb(0 0 0 / 25%);
+	
 	align-items: center;
-	border-bottom: 2px solid rgb(113, 222, 222);
 }
 
 .logoPossi {
@@ -30,16 +34,17 @@
 
 .containerColunas {
 	position: relative;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    width: 300px;
-    height: 750px;
-    background: #e9fcfc;
-    box-shadow: -5px 10px 0px -9px rgb(0 0 0 / 25%);
-    border-radius: 10px;
-    left: 19px;
-    top: 18px;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	width: 354px;
+	height: 782px;
+	background: #FBFFFF;
+	box-shadow: -5px 16px 0px -9px rgb(0 0 0 / 25%);
+	border-radius: 14px;
+	border-radius: 10px;
+	left: 19px;
+	top: 18px;
 }
 
 .colunaDiv {
@@ -70,16 +75,30 @@
 	top: 5px;
 	position: relative;
 
-	
+
 }
 
-.botaoAdd{
-	height: 50px;
-	width: 250px;
-	font-size: 26px;
-	color: #4a62ea;
+.addBottom {
+	background: #113055;
+	color: white;
+	box-shadow: 3px 7px 2px -4px rgb(0 0 0 / 25%);
+	border-radius: 42px;
+	position: fixed;
+	right: 50px;
+	top: 12px;
+
+	width: 202px;
+	height: 42px;
 	font-family: 'Fira Sans Condensed';
-	background-color: #d0ecec;
-	border: 1px solid rgb(95, 191, 188);
-
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1em;
+	line-height: 30px;
+	color: rgba(255, 255, 255, 0.97);
 }
+
+.addBottom:active {
+	background: linear-gradient(180deg, #113055 0%, #00B2CA 100%);
+	box-shadow: 3px 7px 2px -4px rgba(0, 0, 0, 0.25);
+	transform: translateY(4px);
+  }

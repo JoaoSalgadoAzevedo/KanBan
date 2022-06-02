@@ -245,7 +245,7 @@ const editCard = async () => {
                 
               </option>
 
-              <option value="Decision">
+              <option value="Closed">
                 
               </option>
 

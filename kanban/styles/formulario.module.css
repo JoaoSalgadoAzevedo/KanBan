@@ -3,7 +3,7 @@
 
 
 .formMaindiv {
-	background: rgba(234, 251, 251, 0.97);
+	background: rgba(234, 251, 251);
     box-shadow: -6px 4px 0px 3px rgb(0 0 0 / 15%);
     border-radius: 10px;
     justify-content: space-evenly;
@@ -24,7 +24,7 @@
 }
 
 .formMaindiv2 {
-    background: rgba(234, 251, 251, 0.97);
+    background: rgb(234, 251, 251);
     box-shadow: -6px 4px 0px 3px rgb(0 0 0 / 15%);
     border-radius: 10px;
     box-sizing: border-box;

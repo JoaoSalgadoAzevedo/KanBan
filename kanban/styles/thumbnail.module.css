@@ -6,11 +6,11 @@
 	position: relative;
 	width: 250px;
 	height: 170px;
-	background: #d0ecec;
-	box-shadow: -5px 11px 0px -9px rgb(0 0 0 / 25%);
+	background: rgba(255, 248, 248, 0.97);
+	box-shadow: -6px 4px 0px 3px rgb(0 0 0 / 15%);
 	border-radius: 7px 9px 0px 24px;
-    margin-top: 15px;
-    border: solid 1px rgb(95, 191, 188)
+	margin-top: 15px;
+	border: solid 0.2px rgb(95, 191, 188);
 }
 
 .cardtitles {
@@ -27,16 +27,16 @@
 	color: #113055;
 	margin-top: 10px;
 	margin-bottom: 5px;
-	
+
 }
 
 .infocontainer {
-	
+
 	position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    left: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	left: 1rem;
 }
 
 .cardinfos {

@@ -41,21 +41,32 @@ export default function OpenCard(props) {
   useEffect(() => {
     console.log(props)
     async function callCard() {
-      const res = await fetch(
-        `../../api/catchCard?id=${props.CardId}`, {
-        ////ISTO NAO ESTÁ A FUNCIONAR COM O CARD_ID, tentar perceber pq
-        headers: {
-          "Content-Type": "application/json",
-          "Authenticate": localStorage.getItem("tokenG3")
-        },
+      
+      const res = await fetch(`../../api/cards/catchCard?id=${props.CardId}`, {
         method: "POST"
       })
-      console.log('resposta', res.status)
       if (res.status === 200) {
-        const json = await res.json()
-        setCardData(json.a)
-        console.log("Fim do UseEffect")
+          const json = await res.json()
+          console.log(json)
+          setCardData(json)
+          console.log("Fim do UseEffect")
       }
+      console.log(res.status)
+      // const res = await fetch(
+      //   `../../api/cards/catchCard?id=${props.CardId}`, {
+      //   ////ISTO NAO ESTÁ A FUNCIONAR COM O CARD_ID, tentar perceber pq
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Authenticate": localStorage.getItem("tokenG3")
+      //   },
+      //   method: "POST"
+      // })
+      // console.log('resposta', res.status)
+      // if (res.status === 200) {
+      //   const json = await res.json()
+      //   setCardData(json.a)
+      //   console.log("Fim do UseEffect")
+      // }
     }
     callCard()
   }, [props.CardId])
@@ -65,7 +76,7 @@ export default function OpenCard(props) {
 
   const editCard = async () => {
     const res = await fetch(
-      '../../api/editCard', {
+      '../../api/cards/editCard', {
       body: JSON.stringify(cardData),
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +86,7 @@ export default function OpenCard(props) {
     const json = await res.json()
     console.log(cardData, res.status, json)
   }
-  if (!openAndEdit) {
+  if (openAndEdit == false) {
 
     return (
 
@@ -84,7 +95,7 @@ export default function OpenCard(props) {
           className={form.formMaindiv2}
           onSubmit={(e) => {
             e.preventDefault()
-            editCard()
+            // editCard()
             //AQUI LEVA A FUNCAO DE SUBMIT
           }}>
 
@@ -162,7 +173,7 @@ export default function OpenCard(props) {
                     </option>
                     <option value="Awaiting Response">
                     </option>
-                    <option value="Decision">
+                    <option value="Closed">
                     </option>
                   </datalist>
                 </fieldset>
@@ -239,12 +250,15 @@ export default function OpenCard(props) {
 
             <button
               className={styles.button1}
-              onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+              onClick={() => setOpenAndEdit(true)}>MODO EDIÇÃO</button>
 
 
-            <button
-              className={styles.button1}
-              onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+<button
+                className={styles.button1}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  props.setViewCard(false)
+                }}>VOLTA PARA TRÁS</button>
 
           </div>
 
@@ -256,7 +270,7 @@ export default function OpenCard(props) {
     )
 
   } else {
-    <>
+    return <>
 
 
       <div>
@@ -283,6 +297,7 @@ export default function OpenCard(props) {
 
                     <label className={form.fontTitle}>Co. Name</label><br />
                     <input
+                      value={cardData.companyName}
                       className={form.placeHolderBox}
                       type="text"
                       autoComplete="off"
@@ -292,6 +307,7 @@ export default function OpenCard(props) {
 
                     <label className={form.fontTitle}>Does it have a website?</label><br />
                     <input
+                      value={cardData.companyLink}
                       className={form.placeHolderBox}
                       type="url"
                       onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
@@ -299,6 +315,7 @@ export default function OpenCard(props) {
 
                     <label className={form.fontTitle}>From where?</label><br />
                     <input
+                    value={cardData.companyLocation}
                       className={form.placeHolderBox}
                       type="text"
                       name=""
@@ -318,6 +335,7 @@ export default function OpenCard(props) {
 
                     <label className={form.fontTitle}>Job Function</label><br />
                     <input
+                    value={cardData.jobFunction}
                       className={form.placeHolderBox}
                       type="text"
                       autoComplete="off"
@@ -326,6 +344,7 @@ export default function OpenCard(props) {
 
                     <br /><label className={form.fontTitle}>Offer Source</label><br />
                     <input
+                      value={cardData.offerSource}
                       className={form.placeHolderBox}
                       type="url"
                       onChange={(e) => setCardData({ ...cardData, offerSource: e.target.value })}
@@ -333,6 +352,7 @@ export default function OpenCard(props) {
 
                     <br /><label className={form.fontTitle}>Offer Link</label><br />
                     <input
+                      value={cardData.offerLink}
                       className={form.placeHolderBox}
                       type="url"
                       onChange={(e) => setCardData({ ...cardData, offerLink: e.target.value })}
@@ -340,12 +360,14 @@ export default function OpenCard(props) {
 
                     <br /><label className={form.fontTitle}>Salary Range Between</label>
                     <input
+                      value={cardData.salaryRangeMin}
                       className={form.placeHolderBox}
                       type="number"
                       onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
                       name="salary" min="200" max="5000" step="25" />
                     <label>-</label>
                     <input
+                      value={cardData.salaryRangeMax}
                       className={form.placeHolderBox}
                       type="number"
                       onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
@@ -366,6 +388,7 @@ export default function OpenCard(props) {
 
                     <label className={form.fontTitle} id="Regime">Regime:</label>
                     <input
+                      value={cardData.regime}
                       className={form.placeHolderBox}
                       list="regimes"
                       id="Regime"
@@ -392,6 +415,7 @@ export default function OpenCard(props) {
                     </datalist>
                     <label className={form.fontTitle} id="Estado">State Funnel:</label>
                     <input
+                      value={cardData.stateFunnel}
                       className={form.placeHolderBox}
                       list="state"
                       id="Estado"
@@ -419,7 +443,7 @@ export default function OpenCard(props) {
 
                       </option>
 
-                      <option value="Decision">
+                      <option value="Closed">
 
                       </option>
 
@@ -444,24 +468,27 @@ export default function OpenCard(props) {
                   <h3 className={form.fontDisplay}>Interviewer Contact INFO</h3>
 
                   <label className={form.fontTitle}>Name</label><br />
-                  <input className={form.placeHolderBox} type="text" autoComplete="off"
+                  <input value={cardData.nomeRecruiter} className={form.placeHolderBox} type="text" autoComplete="off"
                     onChange={(e) => setCardData({ ...cardData, nomeRecruiter: e.target.value })}
-                    placeholder='Person Name'></input><br />
+                    placeholder='Person Name' ></input><br />
 
                   <label className={form.fontTitle}>Email</label><br />
                   <input type="email"
+                    value={cardData.emailRecruiter}
                     className={form.placeHolderBox}
                     onChange={(e) => setCardData({ ...cardData, emailRecruiter: e.target.value })}
                     name="description" placeholder='Do you have an email?' />
 
                   <br /><label className={form.fontTitle}>Contact</label><br />
                   <input type="number"
+                  value={cardData.telRecruiter}
                     className={form.placeHolderBox}
                     onChange={(e) => setCardData({ ...cardData, telRecruiter: e.target.value })}
                     name="and contact?" />
 
                   <br /><label className={form.fontTitle}>Linkedin</label><br />
                   <input type="url"
+                    value={cardData.linkedinRecruiter}
                     className={form.placeHolderBox}
                     name="description"
                     onChange={(e) => setCardData({ ...cardData, linkedinRecruiter: e.target.value })}
@@ -475,6 +502,7 @@ export default function OpenCard(props) {
 
                 <label className={form.fontTitle}>Location</label>
                 <input type="text"
+                  value={cardData.appointmentLocation}
                   className={form.placeHolderBox}
                   autoComplete="off"
                   onChange={(e) => setCardData({ ...cardData, appointmentLocation: e.target.value })}
@@ -482,12 +510,14 @@ export default function OpenCard(props) {
 
                 <label className={form.fontTitle}>Next Interview</label>
                 <input type="datetime-local"
+                  value={cardData.appointmentData}
                   className={form.placeHolderBox}
                   onChange={(e) => setCardData({ ...cardData, appointmentData: e.target.value })}
                   name="description" min="19/05/2022" /><br />
 
                 <label className={form.fontTitle}>Last interview</label>
                 <input type="datetime-local"
+                  value={cardData.lastAppointment}
                   className={form.placeHolderBox}
                   onChange={(e) => setCardData({ ...cardData, lastAppointment: e.target.value })}
                   name="description" />
@@ -499,6 +529,7 @@ export default function OpenCard(props) {
               <div>
                 <label className={form.fontDisplay}>Additional Info</label><br />
                 <input type="text"
+                  value={cardData.appoimentInformation}
                   className={form.placeholder2}
                   name="description"
                   onChange={(e) => setCardData({ ...cardData, appoimentInformation: e.target.value })}
@@ -513,13 +544,13 @@ export default function OpenCard(props) {
 
               <button
                 className={styles.button1}
-                onClick={() => setOpenAndEdit(!openAndEdit)}>BORALAESCAPAZ</button>
+                onClick={() => setOpenAndEdit(!openAndEdit)}>VOLTAR ATRÁS</button>
               <button
                 className={styles.button1}
                 onClick={(e) => {
                   e.stopPropagation()
                   props.setViewCard(false)
-                }}>VOLTA PARA TRÁS</button>
+                }}>SAIR </button>
             </span>
           </form>
 

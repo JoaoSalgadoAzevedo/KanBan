@@ -1,7 +1,7 @@
 //LOGIN
 import Head from 'next/head'
 import { useState } from "react"
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 import styles from "../../../styles/signup.module.css"
 
 export default function Login() {
@@ -11,8 +11,10 @@ export default function Login() {
     EmailAddress: "aaa@aaa.aa",
     Password: "password"
   })
+  const [statusAlert, setStatusAlert] = useState()
+
   const login = async () => {
-    
+
     const res = await fetch(
       '../../api/login', {
       body: JSON.stringify(loginData),
@@ -23,14 +25,15 @@ export default function Login() {
     })
 
     const json = await res.json()
+    setStatusAlert(res.status)
 
     //se a resposta for positiva, faz login
-    if(res.status === 200) {
-     routerLogin.push("/plataforma") 
-     localStorage.setItem("tokenG3", json.token)
+    if (res.status === 200) {
+      routerLogin.push("/plataforma")
+      localStorage.setItem("tokenG3", json.token)
     }
     console.log(loginData, res.status, json)
-    
+
   }
 
   return (
@@ -42,21 +45,23 @@ export default function Login() {
       </Head>
 
       <main className={styles.containerE1}>
-      <aside className={styles.containerD1}>
-          <h1 className={styles.logo}>LOGO</h1>
-          <div className={styles.imagem1}>IMAGEM</div>
-          <p>Welcome to your new Job!</p>
+        <aside className={styles.containerD1}>
+          <img src="/picgroup.svg"></img>
+          <img src="/logo.svg"></img>
         </aside>
 
         <form
-        className={styles.containerForm} 
-        onSubmit={(e) => { 
-          e.preventDefault(), 
-          login() }}>
+          className={styles.containerForm}
+          onSubmit={(e) => {
+            e.preventDefault(),
+              login()
+          }}>
 
-          <label> Email
+
+          <span className={styles.fontSignUp}></span>
+          <label className={styles.fontSigninfo}> Email
             <input
-              className={styles.input}
+              className={statusAlert === 404 ? `${styles.fontPassword} ${styles.input}` : styles.input}
               type="email"
               onChange={(e) => setloginData({ ...loginData, EmailAddress: e.target.value })}
               name="description"
@@ -65,9 +70,9 @@ export default function Login() {
               required />
           </label>
 
-          <label> Password
+          <label className={styles.fontSigninfo}> Password
             <input
-              className={styles.input}
+              className={statusAlert === 401 ? `${styles.fontPassword} ${styles.input}` : styles.input}
               type="password"
               name="description"
               onChange={(e) => setloginData({ ...loginData, Password: e.target.value })}
@@ -75,16 +80,18 @@ export default function Login() {
               autoComplete="off"
               required /></label>
 
-          <button
-            className={styles.button1}
-            value="Login"
+          <div style={{ padding: "20px" }}>
+            <button
+              className={styles.button1}
+              value="Login"
             > Login
-          </button>
-            
+            </button>
+            <button className={styles.button1} onClick={() => router.push('/')}>Go back</button>
+          </div>
         </form>
-        
 
-        <footer className={styles.footer}><button onClick={() => router.push('/')}>Go back</button> copyright</footer>
+
+        <footer className={styles.footer}>©2022 Opplog. All rights reserved</footer>
       </main>
     </div>
   )

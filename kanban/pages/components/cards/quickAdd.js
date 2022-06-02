@@ -80,12 +80,11 @@ export default function QuickAdd(props) {
                 autoComplete="off"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, companyName: e.target.value })}
                 placeholder='Company Name'>
-              </input><br />
+              </input><br /><br/>
 
-              <label className={form.fontTitle}>Does it have a website?</label><br />
+              <label className={form.fontTitle}>Website</label><br />
               <input 
               className={form.placeHolderBox}
-              type="url"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, companyLink: e.target.value })}
                 name="description" placeholder="Website"></input><br />
 
@@ -107,13 +106,13 @@ export default function QuickAdd(props) {
               className={form.placeHolderBox} 
               type="text" autoComplete="off"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, jobFunction: e.target.value })}
-                placeholder='Working Position'></input>
+                placeholder='Working Position'></input><br/>
 
 
 
 
 
-<br /><label className={form.fontTitle} id="Range">Monthly Salary Range Between</label>
+<br /><label className={form.fontTitle} id="Range">Monthly Salary Range Between</label><br/>
               <input
               className={form.placeHolderBox}  
               type="number"
@@ -130,7 +129,7 @@ export default function QuickAdd(props) {
                 list="currency"
                 id="Range"
                 name="currency"
-                placeholder="Selecione..." />
+                placeholder="Pick a currency" />
               <datalist id="currency">
 
                 <option value="EUR €" />
@@ -138,7 +137,7 @@ export default function QuickAdd(props) {
                 <option value="GBP £" />
                 <option value="SIM §" />
 
-              </datalist><br />
+              </datalist><br /><br/>
 
 
 
@@ -157,9 +156,9 @@ export default function QuickAdd(props) {
               <option value="Remote" />
               <option value="Hybrid" />
 
-                </datalist>
+                </datalist><br/>
 
-                <label className={form.fontTitle} id="Estado">State Funnel:</label>
+                <br /><label className={form.fontTitle} id="Estado">State Funnel:</label>
                 <input
                 className={form.placeHolderBox}
                 onChange={(e) => setQuickAdd({...QuickAdd, stateFunnel: e.target.value})}
@@ -175,7 +174,7 @@ export default function QuickAdd(props) {
               <option value="Application Sent" />
               <option value="Interview" />
               <option value="Awaiting Response" />
-              <option value="Decision" />
+              <option value="Closed" />
                 </datalist>
 
             </fieldset>
@@ -187,7 +186,7 @@ export default function QuickAdd(props) {
           <input className={styles.button1} type="reset"></input>
           <button 
           className={styles.button1}
-          onClick={() => props.setAddCard(false)}>VOLTAR ATRÁS</button>
+          onClick={() => props.setAddCard(false)}>Close</button>
         </span>
 
         </form>

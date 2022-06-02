@@ -32,14 +32,7 @@ export default function Coluna1(props) {
     <div className='colunas'>
       <h2 className={colunas.textocoluna}>Interest</h2>
 
-      <button
-      className={colunas.botaoAdd}        onClick={() => props.setAddCard(true)}
-        >Add Card</button>
-      {props.addCard && <div>
-        <QuickAdd
-          {...props} />
 
-      </div>}
 
       <h2>
 

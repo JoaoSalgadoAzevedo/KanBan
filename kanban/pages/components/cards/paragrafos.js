@@ -180,7 +180,7 @@ export default function OpenCardEdit(props) {
                 
               </option>
 
-              <option value="Decision">
+              <option value="Closed">
                 
               </option>
 
@@ -417,7 +417,7 @@ export default function OpenCardEdit(props) {
           
         </option>
 
-        <option value="Decision">
+        <option value="Closed">
           
         </option>
 

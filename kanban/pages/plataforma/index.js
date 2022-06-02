@@ -4,7 +4,8 @@ import Dashboard from '../components/dashboard'
 import dashstyle from "../../styles/colunas.module.css"
 // import QuickAdd from ".././components/cards/quickAdd"
 import { useState } from "react"
-
+import colunas from "../../styles/colunas.module.css"
+import QuickAdd from "../components/cards/quickAdd"
 
 
 export default  function Plataforma() {
@@ -26,8 +27,18 @@ export default  function Plataforma() {
   <main className={dashstyle.maindiv}>
 
   <header className={dashstyle.header}>
-    <a href='http://localhost:3000/'><img className={dashstyle.logoPossi}src="Logo-dashboard.svg"></img></a>
-      
+    
+    
+        
+        <a href='http://localhost:3000/'><img className={dashstyle.logoPossi}src="Logo-dashboard.svg"></img></a>
+      <button
+      className={colunas.addBottom}        onClick={() => setAddCard(true)}
+        >Add Card</button>
+      {addCard && <div>
+        <QuickAdd
+          setAddCard
+          addCard />
+      </div>}
 
      </header>
 

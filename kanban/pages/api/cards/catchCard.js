@@ -1,9 +1,9 @@
-import {getCard} from "/../../services/columns/column"
+import {getCard} from "../../../services/cards"
 export default async function catchCard (req, res){
     if(req.method === "POST"){
-        console.log(req.query.id)
         const id = req.query.id
-         let a = await getCard(id)
+        console.log(id)
+         let a = await getCard(req.query.id)   
      
         a ? res.status(200).json(a) : res.status(300).json({message:"Cartão não encontrado"})
     }

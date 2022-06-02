@@ -9,7 +9,7 @@ export default function Coluna5(props) {
   useEffect(() => {
     async function CallBack() {
       const res = await fetch(
-        `../../api/cards/column?stateFunnel=Decision&auth=${localStorage.getItem("tokenG3")}`, {
+        `../../api/cards/column?stateFunnel=Closed&auth=${localStorage.getItem("tokenG3")}`, {
           headers: {
           "Content-Type": "application/json",
           "Authenticate": localStorage.getItem("tokenG3")
@@ -30,7 +30,7 @@ return (
 
   <div className='colunas'>
 
-    <h2 className={colunas.textocoluna}>Decision</h2>
+    <h2 className={colunas.textocoluna}>Closed</h2>
 
     {
       

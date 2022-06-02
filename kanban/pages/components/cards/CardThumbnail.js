@@ -26,18 +26,13 @@ export default function CardThumbnail(props) {
           <span className={smallcard.cardtitles}>Job Function</span>
           <span className={smallcard.cardinfos}>{props.jobFunction}</span>
         </div>
-        <span><p className={smallcard.dateTexto}>{props.creationDate}</p></span>
+        {/* <span><p className={smallcard.dateTexto}>{props.creationDate}</p></span> */}
        {props.viewCard === props.CardId &&  <OpenCard
        {...props} 
         setViewCard={(a) => props.setViewCard(a)}/>}
       </div>
 
-      {/* <p>{props.companyName}</p>
-      <p>{props.jobFunction}</p>
-      <p>{props.creationDate}</p>
-      <p type="hidden">{props.CardId}</p>
-   
- */}
+    
     
 
 </div>
