@@ -76,7 +76,7 @@ export default function Login() {
               type="password"
               name="description"
               onChange={(e) => setloginData({ ...loginData, Password: e.target.value })}
-              placeholder="Inserir Password"
+              placeholder="Insert Password"
               autoComplete="off"
               required /></label>
 
@@ -86,7 +86,7 @@ export default function Login() {
               value="Login"
             > Login
             </button>
-            <button className={styles.button1} onClick={() => router.push('/')}>Go back</button>
+            <button className={styles.button1} onClick={() => router.push('/')}>Return</button>
           </div>
         </form>
 

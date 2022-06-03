@@ -55,12 +55,7 @@ export default function Landing() {
           <div className={styles.boxInfo}>
             <span><img className={styles.image}src="Clip.svg"></img></span>
             <span className={styles.span1}><h3 className={styles.description2}>What you will find?</h3><p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacus vulputate at consectetur egestas ut rhoncus quis. 
-            Tincidunt lorem maecenas porttitor massa nisl mollis lacus id dolor. Amet est mattis amet id quis cum ac accumsan. 
-            Eu proin odio enim vulputate dictum cras nullam consectetur. Fringilla nunc vel sagittis ut. Amet porta fermentum consectetur in ipsum pretium. 
-            Cursus tortor enim ac enim nulla ultrices magnis quisque sed. Etiam erat ut velit convallis cursus sit lectus in vel. 
-            Lectus in libero, ornare faucibus id viverra consequat egestas dolor. Enim sed at ullamcorper proin duis metus, metus. 
-            Semper urna egestas nulla morbi ligula.</p></span>
+            Here it should go an image of our platform</p></span>
 
           </div>
           <span className={styles.fontCopyright}><p>©2022 Opplog. All rights reserved</p></span>

@@ -106,13 +106,13 @@ export default function OpenCard(props) {
                 <fieldset className={form.formFormat}>
                   <h3 className={form.fontDisplay}>Company INFO</h3>
 
-                  <label className={form.fontTitle}>Co. Name</label><br />
+                  <label className={form.fontTitle}>Company Name</label><br />
                   <p>{cardData.companyName}</p>
-                  <label className={form.fontTitle}>Does it have a website?</label><br />
+                  <label className={form.fontTitle}>Company Website </label><br />
                   <p>{cardData.companyLink}</p>
 
 
-                  <label className={form.fontTitle}>From where?</label><br />
+                  <label className={form.fontTitle}>Company Address</label><br />
                   <p>{cardData.companyLocation}</p>
 
                 </fieldset>
@@ -124,7 +124,7 @@ export default function OpenCard(props) {
                     <h3 className={form.fontDisplay}>Job Function</h3>
                   </legend>
 
-                  <label className={form.fontTitle}>Job Function</label>
+                  <br/><label className={form.fontTitle}>Job Function</label>
                   <span>{cardData.jobFunction}</span>
 
 
@@ -136,19 +136,13 @@ export default function OpenCard(props) {
                   <span>{cardData.offerLink}</span>
 
 
-                  <label className={form.fontTitle}>Salary Range Between</label>
-                  <p>{cardData.salaryRangeMax}{cardData.salaryRangeMin}</p>
+                  <br/><label className={form.fontTitle}>Monthly Salary Range</label>
+                  <span>Between €{cardData.salaryRangeMax} and €{cardData.salaryRangeMin}</span>
 
 
-                  <select className={form.placeHolderBox}>
+                  
 
-                    <option>Euro   €</option>
-                    <option>Dolar  $</option>
-                    <option>Cenas ai</option>
-
-                  </select>
-
-                  <label className={form.fontTitle} id="Regime">Regime:</label>
+                  <br/><label className={form.fontTitle} id="Regime">Regime:</label>
                   <p>{cardData.regime}</p>
 
 
@@ -250,7 +244,7 @@ export default function OpenCard(props) {
 
             <button
               className={styles.button1}
-              onClick={() => setOpenAndEdit(true)}>MODO EDIÇÃO</button>
+              onClick={() => setOpenAndEdit(true)}>Edit Card</button>
 
 
 <button
@@ -258,7 +252,7 @@ export default function OpenCard(props) {
                 onClick={(e) => {
                   e.stopPropagation()
                   props.setViewCard(false)
-                }}>VOLTA PARA TRÁS</button>
+                }}>Return</button>
 
           </div>
 
@@ -295,7 +289,7 @@ export default function OpenCard(props) {
                   <fieldset className={form.formFormat}>
                     <h3 className={form.fontDisplay}>Company INFO</h3>
 
-                    <label className={form.fontTitle}>Co. Name</label><br />
+                    <label className={form.fontTitle}>Company Name</label><br />
                     <input
                       value={cardData.companyName}
                       className={form.placeHolderBox}
@@ -305,7 +299,7 @@ export default function OpenCard(props) {
                       placeholder='Company Name'>
                     </input><br />
 
-                    <label className={form.fontTitle}>Does it have a website?</label><br />
+                    <label className={form.fontTitle}>Company Website</label><br />
                     <input
                       value={cardData.companyLink}
                       className={form.placeHolderBox}
@@ -313,7 +307,7 @@ export default function OpenCard(props) {
                       onChange={(e) => setCardData({ ...cardData, companyLink: e.target.value })}
                       name="description" placeholder={cardData.companyLink}></input><br />
 
-                    <label className={form.fontTitle}>From where?</label><br />
+                    <label className={form.fontTitle}>Company Address</label><br />
                     <input
                     value={cardData.companyLocation}
                       className={form.placeHolderBox}
@@ -364,14 +358,16 @@ export default function OpenCard(props) {
                       className={form.placeHolderBox}
                       type="number"
                       onChange={(e) => setCardData({ ...cardData, salaryRangeMin: e.target.value })}
-                      name="salary" min="200" max="5000" step="25" />
+                      name="salary" min="200" max="10000" step="25" />
                     <label>-</label>
                     <input
                       value={cardData.salaryRangeMax}
                       className={form.placeHolderBox}
                       type="number"
+                      list="currency"
+                      id="Range"
                       onChange={(e) => setCardData({ ...cardData, salaryRangeMax: e.target.value })}
-                      name="salary" min="200" max="5000" step="25" />
+                      name="currency" min="200" max="5000" step="25" />
 
 
                     <datalist className={form.placeHolderBox} id="currency">
@@ -413,7 +409,7 @@ export default function OpenCard(props) {
                       </option>
 
                     </datalist>
-                    <label className={form.fontTitle} id="Estado">State Funnel:</label>
+                    <br/><label className={form.fontTitle} id="Estado">State Funnel:</label>
                     <input
                       value={cardData.stateFunnel}
                       className={form.placeHolderBox}
@@ -544,13 +540,13 @@ export default function OpenCard(props) {
 
               <button
                 className={styles.button1}
-                onClick={() => setOpenAndEdit(!openAndEdit)}>VOLTAR ATRÁS</button>
+                onClick={() => setOpenAndEdit(!openAndEdit)}>Return to View</button>
               <button
                 className={styles.button1}
                 onClick={(e) => {
                   e.stopPropagation()
                   props.setViewCard(false)
-                }}>SAIR </button>
+                }}>Close</button>
             </span>
           </form>
 

@@ -2,11 +2,11 @@ import { useState } from "react"
 // import styles from "../../../styles/colunas.module.css"
 import styles from "../../../styles/Home.module.css"
 import form from "../../../styles/formulario.module.css"
-import {useRouter} from "next/router"
+
 
 
 export default function QuickAdd(props) {
-  const router = useRouter()
+
   
   const [QuickAdd, setQuickAdd] = useState({
     // Card_Id: "_id",
@@ -117,7 +117,7 @@ export default function QuickAdd(props) {
               className={form.placeHolderBox}  
               type="number"
                 onChange={(e) => setQuickAdd({ ...QuickAdd, salaryRangeMin: e.target.value })}
-                name="salary" min="200" max="5000" step="25" />
+                name="salary" min="200" max="100000" step="25" />
               <label>-</label>
               <input
               className={form.placeHolderBox} 
@@ -148,7 +148,7 @@ export default function QuickAdd(props) {
                 list="regimes"
                 id="Regime"
                 name="regimes"
-                placeholder="Selecione..." />
+                placeholder="Pick a Regime" />
                 
                 
                 <datalist  id="regimes">
@@ -165,7 +165,7 @@ export default function QuickAdd(props) {
                 list="state"
                 id="Estado"
                 name="state"
-                placeholder="Selecione..." />
+                placeholder="Opportunity State" />
                 
                 
                 <datalist  id="state">

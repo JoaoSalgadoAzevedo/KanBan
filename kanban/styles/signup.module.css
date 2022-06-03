@@ -195,3 +195,14 @@
 .fontPassword{
   border: solid 2px red;
 }
+
+.inputCheck{
+  /* display: inline-block; */
+  position: relative;
+  right: 180px;
+  border-radius: 2px;
+  height: 20px;
+  width: 20px;
+  /* bottom: 2px; */
+
+}

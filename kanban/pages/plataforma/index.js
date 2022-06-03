@@ -4,6 +4,7 @@ import Dashboard from '../components/dashboard'
 import dashstyle from "../../styles/colunas.module.css"
 // import QuickAdd from ".././components/cards/quickAdd"
 import { useState } from "react"
+import { useRouter } from "next/router"
 import colunas from "../../styles/colunas.module.css"
 import QuickAdd from "../components/cards/quickAdd"
 
@@ -11,6 +12,7 @@ import QuickAdd from "../components/cards/quickAdd"
 export default  function Plataforma() {
   const [addCard, setAddCard] = useState(false)
   // const [open, setOpen] = useState(false)
+  const router = useRouter()
 
   const [viewCard, setViewCard] = useState(false)
   
@@ -30,10 +32,13 @@ export default  function Plataforma() {
     
     
         
-        <a href='http://localhost:3000/'><img className={dashstyle.logoPossi}src="Logo-dashboard.svg"></img></a>
+        <img className={dashstyle.logoPossi} src="Logo-dashboard.svg"></img>
+        <button 
+        className={colunas.logoutbutton} 
+        onClick={() => router.push("/components/paginaInicial/login")}>Logout</button>
       <button
       className={colunas.addBottom}        onClick={() => setAddCard(true)}
-        >Add Card</button>
+        >Create Opportunity</button>
       {addCard && <div>
         <QuickAdd
           setAddCard

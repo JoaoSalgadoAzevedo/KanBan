@@ -116,6 +116,7 @@ export default function Signup() {
 
           <label className={styles.fontSigninfo}> Accept terms
             <input
+              className={styles.inputCheck}
               type="checkbox"
               required
               onChange={(e) => setSignupData({ ...signupData, terms: !signupData.terms })}
@@ -125,7 +126,7 @@ export default function Signup() {
             <button className={styles.button1}
               value="Sign Up">
               Submit
-            </button><button className={styles.button1} onClick={() => router.push('/')}>Go back</button>
+            </button><button className={styles.button1} onClick={() => router.push('/')}>Return</button>
           </div>
 
 
